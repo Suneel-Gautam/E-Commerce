@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="modalContainer">
+      <div class="modalHeader">
+        <h1>Add Product</h1>
+        <i class="fa-solid fa-xmark"></i>
+      </div>
+      <div class="contentArea">
+        <div class="inputbox">
+          <label for="">Product Name</label>
+          <input type="text" placeholder="Enter Product name" />
+        </div>
+        <div class="inputbox">
+          <label for="">Description</label>
+          <textarea type="text" placeholder="Product Details"></textarea>
+        </div>
+        <div class="inputbox">
+          <label for="">Price</label>
+          <input type="number" placeholder="0" />
+        </div>
+        <div class="inputbox">
+          <label for="">Catagory</label>
+          <select>
+            <option value="">Example</option>
+          </select>
+        </div>
+        <div class="inputbox">
+          <label for="">Tags</label>
+          <input type="text" placeholder="Enter the tags of products" />
+        </div>
+        <div class="inputbox">
+          <label for="">Image</label>
+          <div id="chooseImage">Choose Image</div>
+          <input type="file" id="selectFile" />
+        </div>
+      </div>
+
+      <button class="btn" id="addButton">Add</button>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
