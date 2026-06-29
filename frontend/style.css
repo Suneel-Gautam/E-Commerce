@@ -17,7 +17,7 @@
 .modalContainer {
   background-color: var(--secondarybg-color);
   max-width: 30rem;
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 20px;
   justify-content: center;
@@ -56,7 +56,6 @@
 .modalContainer button:hover {
   scale: 1.01;
 }
-
 .contentArea {
   width: 100%;
   display: flex;
@@ -97,4 +96,77 @@
   padding: 10px;
   border: 1px solid rgb(158, 158, 158);
   border-radius: 4px;
+}
+
+.CardConatiner {
+  background-color: var(--secondarybg-color);
+  width: 300px;
+  border-radius: 8px;
+}
+.CardConatiner .imageDiv {
+  width: 100%;
+  height: 150px;
+  position: relative;
+}
+.CardConatiner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.CardConatiner .catagory {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 5px;
+  background-color: rgb(53, 51, 51, 0.7);
+  padding: 4px 8px;
+  color: aliceblue;
+  border-radius: 4px;
+}
+
+.contentArea {
+  padding: 12px 20px;
+}
+.contentArea .title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.contentArea .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.contentArea .tag {
+  border: 1px solid rgb(132, 131, 131);
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 10px;
+}
+.contentArea p {
+  font-size: 12px;
+  text-align: justify;
+}
+.contentArea .bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contentArea span {
+  font-size: 28px;
+  font-weight: 500;
+}
+.contentArea .price {
+  font-size: 14px;
+}
+.contentArea .btn {
+  background-color: var(--button-color);
+  color: var(--secondary-textColor);
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.contentArea .btn:hover {
+  scale: 1.04;
+  opacity: 2;
 }
