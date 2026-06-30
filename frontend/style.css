@@ -14,10 +14,20 @@
   font-family: "Montserrat", sans-serif;
   box-sizing: border-box;
 }
+
+.hidecontainer {
+  display: none;
+}
+.showconatinerFlex {
+  display: flex;
+}
+.showConatinerBlock {
+  display: block;
+}
+/* modal container css  */
 .modalContainer {
   background-color: var(--secondarybg-color);
   max-width: 30rem;
-  display: none;
   flex-direction: column;
   gap: 20px;
   justify-content: center;
@@ -98,20 +108,31 @@
   border-radius: 4px;
 }
 
+/* card container */
 .CardConatiner {
   background-color: var(--secondarybg-color);
   width: 300px;
   border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.CardConatiner:hover {
+  scale: 1.01;
+  img {
+    scale: 1.1;
+  }
 }
 .CardConatiner .imageDiv {
   width: 100%;
   height: 150px;
+  overflow: hidden;
   position: relative;
 }
 .CardConatiner img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
 }
 .CardConatiner .catagory {
   position: absolute;
@@ -123,7 +144,6 @@
   color: aliceblue;
   border-radius: 4px;
 }
-
 .contentArea {
   padding: 12px 20px;
 }
