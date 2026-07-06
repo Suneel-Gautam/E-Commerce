@@ -190,3 +190,55 @@
   scale: 1.04;
   opacity: 2;
 }
+
+/* navbar css  */
+
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 36px;
+  background-color: rgb(226, 251, 251);
+}
+.navbarContainer .logo {
+  font-size: 22px;
+  font-weight: 500;
+  color: rgb(36, 36, 80);
+}
+
+.navbarContainer nav {
+  display: flex;
+  gap: 34px;
+}
+.navbarContainer nav a {
+  text-decoration: none;
+  color: rgb(22, 115, 5);
+  font-weight: 500;
+}
+
+.navbarContainer .btn {
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.navbarContainer .btn:hover {
+  cursor: pointer;
+  scale: 1.06;
+}
+
+.navbarContainer .mobileView {
+  display: none;
+}
+
+@media screen and (max-width: 680px) {
+  .navbarContainer nav {
+    display: none;
+    gap: 34px;
+  }
+  .navbarContainer .mobileView {
+    display: flex;
+  }
+  .navbarContainer .btn {
+    display: none;
+  }
+}
