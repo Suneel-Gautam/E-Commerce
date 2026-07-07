@@ -193,13 +193,16 @@
 
 /* navbar css  */
 
+.backgroundNavColor {
+  background-color: rgb(226, 251, 251);
+}
+
 .navbarContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   padding: 14px 36px;
-  background-color: rgb(226, 251, 251);
 }
 .navbarContainer .logo {
   font-size: 22px;
