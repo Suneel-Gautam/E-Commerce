@@ -196,13 +196,17 @@
 .backgroundNavColor {
   background-color: rgb(226, 251, 251);
 }
+.container {
+  max-width: 1300px;
+  margin: auto;
+}
 
 .navbarContainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  padding: 14px 36px;
+  padding: 14px 30px;
 }
 .navbarContainer .logo {
   font-size: 22px;
@@ -234,6 +238,9 @@
 }
 
 @media screen and (max-width: 680px) {
+  .navbarContainer {
+    padding: 14px 20px;
+  }
   .navbarContainer nav {
     display: none;
     gap: 34px;
@@ -243,5 +250,36 @@
   }
   .navbarContainer .btn {
     display: none;
+  }
+}
+
+/* hero container  */
+
+.heroContainer {
+  padding: 10px 30px;
+  display: flex;
+  flex-direction: row;
+}
+
+.heroContainer .leftSideContent {
+  width: 60%;
+}
+.heroContainer .rightSideContent {
+}
+.heroContainer .rightSideContent .image {
+  max-width: 600px;
+  max-height: 600px;
+}
+.heroContainer .rightSideContent .image img {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 680px) {
+  .heroContainer {
+    padding: 10px 20px;
+    flex-direction: column;
+  }
+  .heroContainer .leftSideContent {
+    width: 100%;
   }
 }
