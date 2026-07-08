@@ -1,0 +1,306 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto+Mono:ital,wght@0,100..700;1,100..700&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
+
+:root {
+  --bg-color: white;
+  --secondarybg-color: rgba(244, 240, 224, 0.817);
+  --text-color: black;
+  --secondary-textColor: white;
+  --button-color: rgb(9, 77, 4);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+}
+
+.hidecontainer {
+  display: none;
+}
+.showconatinerFlex {
+  display: flex;
+}
+.showConatinerBlock {
+  display: block;
+}
+/* modal container css  */
+.modalContainer {
+  background-color: var(--secondarybg-color);
+  max-width: 30rem;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  align-items: start;
+  padding: 20px 30px;
+}
+.modalContainer .modalHeader {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.modalContainer .modalHeader i {
+  font-size: 22px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.modalContainer .modalHeader i:hover {
+  scale: 1.1;
+}
+.modalContainer h1 {
+  font-size: 28px;
+  text-align: center;
+}
+.modalContainer button {
+  padding: 10px 20px;
+  width: 100%;
+  font-size: 20px;
+  outline: none;
+  background-color: var(--button-color);
+  color: var(--secondary-textColor);
+  border-radius: 4px;
+  transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.modalContainer button:hover {
+  scale: 1.01;
+}
+.contentArea {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.inputbox {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+#chooseImage {
+  padding: 10px;
+  border: 1px solid var(--button-color);
+  color: var(--text-color);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+#chooseImage:hover {
+  scale: 1.01;
+}
+.inputbox input {
+  outline: none;
+  padding: 10px;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 4px;
+}
+.inputbox textarea {
+  outline: none;
+  padding: 10px;
+  border: 1px solid rgb(158, 158, 158);
+  height: 100px;
+  border-radius: 4px;
+}
+.inputbox select {
+  outline: none;
+  padding: 10px;
+  border: 1px solid rgb(158, 158, 158);
+  border-radius: 4px;
+}
+
+/* card container */
+.CardConatiner {
+  background-color: var(--secondarybg-color);
+  width: 300px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.CardConatiner:hover {
+  scale: 1.01;
+  img {
+    scale: 1.1;
+  }
+}
+.CardConatiner .imageDiv {
+  width: 100%;
+  height: 150px;
+  overflow: hidden;
+  position: relative;
+}
+.CardConatiner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.CardConatiner .catagory {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin: 5px;
+  background-color: rgb(53, 51, 51, 0.7);
+  padding: 4px 8px;
+  color: aliceblue;
+  border-radius: 4px;
+}
+.contentArea {
+  padding: 12px 20px;
+}
+.contentArea .title {
+  font-size: 18px;
+  font-weight: 600;
+}
+.contentArea .tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.contentArea .tag {
+  border: 1px solid rgb(132, 131, 131);
+  padding: 4px 12px;
+  border-radius: 30px;
+  font-size: 10px;
+}
+.contentArea p {
+  font-size: 12px;
+  text-align: justify;
+}
+.contentArea .bottomRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.contentArea span {
+  font-size: 28px;
+  font-weight: 500;
+}
+.contentArea .price {
+  font-size: 14px;
+}
+.contentArea .btn {
+  background-color: var(--button-color);
+  color: var(--secondary-textColor);
+  padding: 10px 18px;
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+.contentArea .btn:hover {
+  scale: 1.04;
+  opacity: 2;
+}
+
+/* navbar css  */
+
+.backgroundNavColor {
+  background-color: rgb(226, 251, 251);
+}
+.container {
+  max-width: 1300px;
+  margin: auto;
+}
+
+.navbarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 30px;
+}
+.navbarContainer .logo {
+  font-size: 22px;
+  font-weight: 500;
+  color: rgb(36, 36, 80);
+}
+
+.navbarContainer nav {
+  display: flex;
+  gap: 34px;
+}
+.navbarContainer nav a {
+  text-decoration: none;
+  color: rgb(22, 115, 5);
+  font-weight: 500;
+}
+
+.navbarContainer .btn {
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.19, 1, 0.22, 1);
+}
+.navbarContainer .btn:hover {
+  cursor: pointer;
+  scale: 1.06;
+}
+
+.navbarContainer .mobileView {
+  display: none;
+}
+
+@media screen and (max-width: 680px) {
+  .navbarContainer {
+    padding: 14px 20px;
+  }
+  .navbarContainer nav {
+    display: none;
+    gap: 34px;
+  }
+  .navbarContainer .mobileView {
+    display: flex;
+  }
+  .navbarContainer .btn {
+    display: none;
+  }
+}
+
+/* hero container  */
+
+.heroContainer {
+  padding: 20px 30px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-top: 60px;
+}
+
+.heroContainer .leftSideContent {
+  width: 60%;
+}
+.heroContainer .leftSideContent span {
+  font-size: 80px;
+  font-family: cursive;
+  font-weight: 600;
+}
+.heroContainer .leftSideContent p {
+  margin-top: 16px;
+  font-size: 18px;
+}
+
+.heroContainer .rightSideContent .image {
+  max-width: 600px;
+  max-height: 600px;
+}
+.heroContainer .rightSideContent .image img {
+  width: 100%;
+  height: 100%;
+}
+@media screen and (max-width: 680px) {
+  .heroContainer {
+    padding: 10px 20px;
+    flex-direction: column;
+    margin-top: 30px;
+  }
+  .heroContainer .leftSideContent {
+    width: 100%;
+  }
+  .heroContainer .leftSideContent span {
+    font-size: 60px;
+    font-family: cursive;
+    font-weight: 600;
+  }
+  .heroContainer .leftSideContent p {
+    margin-top: 14px;
+    font-size: 14px;
+  }
+}
