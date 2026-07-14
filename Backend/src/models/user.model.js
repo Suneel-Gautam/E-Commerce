@@ -25,14 +25,21 @@ const userSchema = new mongoose.Schema({
     },
     profilePic: {
         type: String,
+    },
+    refreshToken: {
+        type: String
     }
 
 })
 
-const User = mongoose.model('User', userSchema)
-UserSchema.pre('save', async function () {
+userSchema.pre('save', async function () {
     if (!this.isModified('password')) return
     this.password = await bcrypt.hash(this.password, 10)
 })
 
+userSchema.methods.isPasswordCorrect = function (oldPassword) {
+    return bcrypt.compare(oldPassword, this.password)
+}
+
+const User = mongoose.model('User', userSchema)
 export default User

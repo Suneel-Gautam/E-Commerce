@@ -14,7 +14,7 @@ const fileUpload = async (localfilePath) => {
             resource_type: "auto"
         })
         fs.unlinkSync(localfilePath)
-        return response
+        return response.url
 
     } catch (error) {
         console.log(error)
