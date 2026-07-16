@@ -23,7 +23,6 @@ const register = asyncHandler(async (req, res) => {
             "Failed to upload on server"
         )
     }
-
     const user = await User.create({
         username,
         email,
