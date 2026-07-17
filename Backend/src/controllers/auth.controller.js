@@ -160,7 +160,86 @@ const logout = asyncHandler(async (req, res) => {
         )
 })
 
+const changePassword = asyncHandler(async (req, res) => {
+
+    const { oldpassword, newPassword } = req.body
+
+    if (!oldpassword || !newPassword) {
+        throw new ApiError(
+            401,
+            "Please provide oldpassword and newpassword!! "
+        )
+    }
+    const user = await User.findById(
+        req.user._id
+    )
+    if (!user) {
+        throw new ApiError(
+            404,
+            "User not found"
+        )
+    }
+
+    const isPasswordCorrect = await user.isPasswordCorrect(oldpassword)
+
+    if (!isPasswordCorrect) {
+        throw new ApiError(
+            403,
+            "Old password is incorrect!!"
+        )
+    }
+    user.password = newPassword
+    await user.save({ validateBeforeSave: false })
+
+})
+
+const editProfile = asyncHandler(async (req, res) => {
+
+    const { username, phone } = req.body
+
+    const profilePic = req.profilePic.path
+
+    const filterdUpdate = {}
+
+    if (username.trim()) {
+        filterdUpdate.username = username
+    }
+    if (phone) {
+        filterdUpdate.phone = phone
+    }
+    if (profilePic) {
+        filterdUpdate.profilePic = profilePic
+    }
+    const user = await User.findByIdAndUpdate(
+        req.user._id,
+        {
+            $set: filterdUpdate
+        },
+        {
+            new: true
+        }
+    ).select('-password -refreshToken')
+
+    if (!user) {
+        throw new ApiError(
+            404,
+            "User not found"
+        )
+    }
+
+    return res.status(200).json(
+        new Apiresponse(
+            200,
+            user,
+            "User updated Sucessfully"
+        )
+    )
+})
+
 export {
     register,
-    login
+    login,
+    logout,
+    changePassword,
+    editProfile
 }
