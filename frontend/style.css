@@ -234,6 +234,9 @@
 .navbarContainer .mobileView {
   display: none;
 }
+.navbarContainer .profileDropdown{
+  position: fixed;
+}
 /* hero container  */
 .heroContainer {
   padding: 20px 30px;
@@ -304,6 +307,7 @@
   gap: 30px;
   flex-wrap: wrap;
   align-items: center;
+  justify-content: center;
 }
 
 @media screen and (max-width: 880px) {
