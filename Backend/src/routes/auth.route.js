@@ -31,3 +31,6 @@ router.route('/edit-profile').post(
 router.route('/token-refresh').post(
     createAccessAndRefreshToken
 )
+
+
+export default router
