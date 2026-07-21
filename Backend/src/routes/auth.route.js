@@ -1,6 +1,6 @@
 import { Router } from "express";
 
-import { register, login, logout, changePassword, editProfile } from "../controllers/auth.controller.js";
+import { register, login, logout, changePassword, editProfile, createAccessAndRefreshToken } from "../controllers/auth.controller.js";
 import { jwtVerify } from "../middlewares/auth.midleware.js";
 import { upload } from "../middlewares/mutler.middleware.js";
 
@@ -27,4 +27,7 @@ router.route('/edit-profile').post(
     upload.single('profilePic'),
     changePassword,
     editProfile
+)
+router.route('/token-refresh').post(
+    createAccessAndRefreshToken
 )

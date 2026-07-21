@@ -3,6 +3,8 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from '../utils/apiError.js'
 import { fileUpload } from "../utils/cloudinary.js";
 import { Apiresponse } from '../utils/apiResponse.js'
+import { jwtVerify } from "../middlewares/auth.midleware.js";
+import jwt from 'jsonwebtoken'
 
 
 const generateAccessTokenRefreshToken = async function (userId) {
@@ -236,10 +238,81 @@ const editProfile = asyncHandler(async (req, res) => {
     )
 })
 
+const createAccessAndRefreshToken = asyncHandler(async (req, res) => {
+    const token = req.cookies?.refreshToken || req.body.refreshToken
+
+    if (!token) {
+        throw new ApiError(
+            400,
+            "Token missing!! please provide the token!!"
+        )
+    }
+    const decoded = jwt.verify(
+        token,
+        process.env.REFRESH_TOKEN_SECRET
+    )
+
+    if (!decoded) {
+        throw new ApiError(
+            403,
+            "Invalid Token !!!"
+        )
+    }
+
+    const user = await User.findById(decoded._id)
+
+    if (!user) {
+        throw new ApiError(
+            404,
+            "User not found!!!"
+        )
+    }
+
+    if (!(user.refreshToken === token)) {
+        throw new ApiError(
+            400,
+            "Incorrect refresh token!!!"
+        )
+
+    }
+
+    const { accessToken, refreshToken } = await generateAccessTokenRefreshToken(user._id)
+
+    const logginedUser = await User.findById(user._id).select('-password -refreshToken')
+
+    if (!logginedUser) {
+        throw new ApiError(
+            404,
+            "User Not Found!!"
+        )
+    }
+
+
+    const options = {
+        httpOnly: true,
+        secure: true
+    }
+    return res.status(200)
+        .cookie('accessToken', accessToken, options)
+        .cookie('refreshToken', refreshToken, options)
+        .json(
+            new Apiresponse(
+                200,
+                {
+                    logginedUser,
+                    accessToken,
+                    refreshToken
+                },
+                "AccessToken Refreshed SucessFully"
+            )
+        )
+})
+
 export {
     register,
     login,
     logout,
     changePassword,
-    editProfile
+    editProfile,
+    createAccessAndRefreshToken
 }
