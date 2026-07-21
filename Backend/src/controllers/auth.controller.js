@@ -32,7 +32,7 @@ const register = asyncHandler(async (req, res) => {
             "Please provide all the missing fields"
         )
     }
-    const profilePicPath = req.file?.path
+    const profilePicPath = req.file?.profilePic.path
     if (profilePicPath) {
         const response = await fileUpload(profilePicPath)
     }
@@ -199,7 +199,7 @@ const editProfile = asyncHandler(async (req, res) => {
 
     const { username, phone } = req.body
 
-    const profilePic = req.profilePic.path
+    const profilePic = req.file?.profilePic.path
 
     const filterdUpdate = {}
 
