@@ -1,7 +1,9 @@
 import {
     createProduct,
     editProduct,
-    deleteProduct
+    deleteProduct,
+    getProduct,
+    getProductDetails
 } from "../controllers/product.controller.js";
 import { Router } from "express";
 import { jwtVerify } from "../middlewares/auth.midleware.js";
@@ -23,6 +25,12 @@ router.route('/:id').patch(
 router.route('/:id').delete(
     jwtVerify,
     deleteProduct
+)
+router.route('/').get(
+    getProduct
+)
+router.route('/:id').get(
+    getProductDetails
 )
 
 export default router

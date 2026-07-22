@@ -128,9 +128,38 @@ const deleteProduct = asyncHandler(async (req, res) => {
     )
 
 })
+const getProduct = asyncHandler(async (req, res) => {
+    const product = await Product.find()
+
+    return res.status(200).json(
+        200,
+        "Product fetched Sucessfully!!"
+    )
+})
+const getProductDetails = asyncHandler(async (req, res) => {
+    const id = req.params.id
+
+    const product = await Product.findById(id)
+    if (!product) {
+        throw new ApiError(
+            404,
+            "Product not found!!!"
+        )
+    }
+
+    return res.status(200).json(
+        new Apiresponse(
+            200,
+            product,
+            "Product details fetched Sucessfully!!"
+        )
+    )
+})
 
 export {
     createProduct,
     deleteProduct,
-    editProduct
+    editProduct,
+    getProduct,
+    getProductDetails
 }

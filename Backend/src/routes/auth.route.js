@@ -20,7 +20,6 @@ router.route('/logout').post(
 router.route('/change-password').post(
     jwtVerify,
     changePassword
-
 )
 router.route('/edit-profile').post(
     jwtVerify,

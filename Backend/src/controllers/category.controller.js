@@ -89,9 +89,24 @@ const deleteCategory = asyncHandler(async (req, res) => {
     )
 })
 
+const getCategory = asyncHandler(async (req, res) => {
+
+    const category = await Category.find()
+
+    return res.status(200).json(
+        new Apiresponse(
+            200,
+            category,
+            "Category fetched Sucessfully"
+        )
+    )
+
+})
+
 
 export {
     createCategory,
     editCategory,
-    deleteCategory
+    deleteCategory,
+    getCategory
 }
