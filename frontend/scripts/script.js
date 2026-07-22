@@ -1,33 +1,3 @@
-const profileBtn = document.querySelector('.btn')
-const profileDropdown = document.querySelector('.profileDropdown')
-
-let isOpen = false
-profileBtn.addEventListener('click', () => {
-  if (isOpen) {
-    profileDropdown.style.display = 'none'
-    isOpen = false
-  } else {
-    profileDropdown.style.display = 'flex'
-    isOpen = true
-  }
-})
-
-const mobileViewNavbarButton = document.querySelector('.mobileViewbutton')
-const mobileViewNavbar = document.querySelector('.mobileview')
-let isNavOpen = false
-mobileViewNavbarButton.addEventListener('click', () => {
-  if (isNavOpen) {
-    mobileViewNavbar.style.display = 'none'
-    isNavOpen = false
-  } else {
-    mobileViewNavbar.style.display = "flex"
-    isNavOpen = true
-  }
-
-})
-
-
-
 
 const selectFile = document.querySelector('#selectFile')
 const chooseImage = document.querySelector('#chooseImage')
