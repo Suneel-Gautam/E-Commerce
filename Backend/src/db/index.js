@@ -1,7 +1,5 @@
 import mongoose from "mongoose";
 import { DATABASE_NAME } from "../contants.js";
-import dns from 'dns'
-dns.setServers(['8.8.8.8'])
 
 const mongodbConnect = async function () {
     try {

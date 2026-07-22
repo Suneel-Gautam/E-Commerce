@@ -25,7 +25,6 @@ router.route('/change-password').post(
 router.route('/edit-profile').post(
     jwtVerify,
     upload.single('profilePic'),
-    changePassword,
     editProfile
 )
 router.route('/token-refresh').post(

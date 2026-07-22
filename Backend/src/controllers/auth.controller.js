@@ -32,23 +32,29 @@ const register = asyncHandler(async (req, res) => {
             "Please provide all the missing fields"
         )
     }
-    const profilePicPath = req.file?.profilePic.path
+    const profilePicPath = req.file?.path
+
+    console.log(req.file)
+
+    let response;
     if (profilePicPath) {
-        const response = await fileUpload(profilePicPath)
+        response = await fileUpload(profilePicPath)
     }
+
     if (!response) {
         throw new ApiError(
             403,
             "Failed to upload image on server"
         )
     }
+
     const user = await User.create({
         username,
         email,
         phone,
         password,
-        profilePic: response || null
-    }).select('-password -refreshToken')
+        profilePic: response || ""
+    })
 
     if (!user) {
         throw new ApiError(
@@ -56,7 +62,9 @@ const register = asyncHandler(async (req, res) => {
             "Failed to create user"
         )
     }
-    const { accessToken, refreshToken } = await generateAccessTokenRefreshToken(user_.id)
+    const { accessToken, refreshToken } = await generateAccessTokenRefreshToken(user._id)
+
+    const registerUser = await User.findById(user._id).select('-password -refreshToken')
 
     const options = {
         httpOnly: true,
@@ -69,7 +77,7 @@ const register = asyncHandler(async (req, res) => {
             new Apiresponse(
                 200,
                 {
-                    user,
+                    user: registerUser,
                     accessToken,
                     refreshToken
                 },
@@ -96,15 +104,15 @@ const login = asyncHandler(async (req, res) => {
             "User not found with username or email"
         )
     }
-    const isPasswordCorrect = await user.isPasswordCorrect(user.password)
+    const isPasswordCorrect = await user.isPasswordCorrect(password)
     if (!isPasswordCorrect) {
         throw new ApiError(
             403,
             "Invalid Credentails"
         )
     }
-    const { accessToken, refreshToken } = await generateAccessTokenRefreshToken(user_.id)
-    const loginUser = user.select('-password -refreshToken')
+    const { accessToken, refreshToken } = await generateAccessTokenRefreshToken(user._id)
+    const loginUser = await User.findById(user._id).select('-password -refreshToken')
     const options = {
         httpOnly: true,
         secure: true
@@ -116,11 +124,11 @@ const login = asyncHandler(async (req, res) => {
             new Apiresponse(
                 200,
                 {
-                    loginUser,
+                    user: loginUser,
                     accessToken,
                     refreshToken
                 },
-                "User Created SucessFully"
+                "User login SucessFully"
             )
         )
 })
@@ -134,9 +142,7 @@ const logout = asyncHandler(async (req, res) => {
                 refreshToken: null
             }
         },
-        {
-            new: true
-        }
+        { returnDocument: "after" }
     )
     if (!user) {
         throw new ApiError(
@@ -150,7 +156,7 @@ const logout = asyncHandler(async (req, res) => {
         secure: true
     }
 
-    res.status(200)
+    return res.status(200)
         .clearCookie("accessToken", options)
         .clearCookie("refreshToken", options)
         .json(
@@ -165,7 +171,6 @@ const logout = asyncHandler(async (req, res) => {
 const changePassword = asyncHandler(async (req, res) => {
 
     const { oldpassword, newPassword } = req.body
-
     if (!oldpassword || !newPassword) {
         throw new ApiError(
             401,
@@ -193,16 +198,23 @@ const changePassword = asyncHandler(async (req, res) => {
     user.password = newPassword
     await user.save({ validateBeforeSave: false })
 
+    const loginedUser = await User.findById(user._id).select('-password -refreshToken')
+
+    return res.status(200).json(
+        new Apiresponse(
+            200,
+            {
+                user: loginedUser
+            },
+            "PasswordChanged Sucessfully!!!"
+        )
+    )
 })
 
 const editProfile = asyncHandler(async (req, res) => {
-
     const { username, phone } = req.body
-
     const profilePic = req.file?.profilePic.path
-
     const filterdUpdate = {}
-
     if (username.trim()) {
         filterdUpdate.username = username
     }
@@ -218,7 +230,7 @@ const editProfile = asyncHandler(async (req, res) => {
             $set: filterdUpdate
         },
         {
-            new: true
+            returnDocument: "after"
         }
     ).select('-password -refreshToken')
 

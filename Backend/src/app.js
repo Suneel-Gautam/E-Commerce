@@ -1,12 +1,11 @@
 import express from 'express'
-import { configDotenv } from "dotenv"
 import cookieParser from 'cookie-parser'
 import cors from 'cors'
 import categoryRoute from './routes/category.route.js'
 import authRoute from './routes/auth.route.js'
 import productRoute from './routes/product.route.js'
 
-configDotenv()
+
 
 const app = express()
 

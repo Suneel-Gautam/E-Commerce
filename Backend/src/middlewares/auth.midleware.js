@@ -25,5 +25,6 @@ export const jwtVerify = asyncHandler((req, res, next) => {
             "Invalid token!!"
         )
     }
-    req.user = decoded._id
+    req.user = decoded
+    next()
 })
