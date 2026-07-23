@@ -6,29 +6,35 @@ import { fileUpload } from "../utils/cloudinary.js";
 
 
 const createProduct = asyncHandler(async (req, res) => {
-    const { name, description, price, stock, category } = req.body
+    const { name, description, price, stock, category, size } = req.body
 
-    if (!name.trim() || !description.trim() || !price || !stock || !category) {
+    if (!name.trim() || !category) {
         throw new ApiError(
             400,
             "All feilds must be provided!!!"
         )
     }
-
-    const productImagePath = req.file?.productImage.path
-
-    if (productImagePath) {
-        const productImage = await fileUpload(productImagePath)
+    if (!size) {
+        throw new ApiError(
+            400,
+            "Please Select the Size!!!"
+        )
     }
-
+    const productImagePath = req.file?.productImage.path
+    let productImage;
+    if (productImagePath) {
+        productImage = await fileUpload(productImagePath)
+    }
+    console.log(req.body.size)
     const product = await Product.create({
         name,
         description,
         price,
         stock,
+        size,
         category,
         productImage: productImage || "",
-        owner: req.user._id
+        owner: req.user._id,
     })
 
     if (!product) {
@@ -50,18 +56,21 @@ const editProduct = asyncHandler(async (req, res) => {
 
     const id = req.params.id
 
-    const { name, description, price, stock, category } = req.body
+    const { name, description, price, stock, category, size } = req.body
 
     const updatedFields = {}
 
-    if (name.trim()) {
+    if (name) {
         updatedFields.name = name
     }
-    if (description.trim()) {
+    if (description) {
         updatedFields.description = description
     }
     if (price) {
         updatedFields.price = price
+    }
+    if (size) {
+        updatedFields.size = size
     }
     if (stock) {
         updatedFields.stock = stock
@@ -70,10 +79,10 @@ const editProduct = asyncHandler(async (req, res) => {
         updatedFields.category = category
     }
 
-    const productImagePath = req.file?.productImage.path
-
+    const productImagePath = req.file?.path
+    let productImage;
     if (productImagePath) {
-        const productImage = await fileUpload(productImagePath)
+        productImage = await fileUpload(productImagePath)
         updatedFields.productImage = productImage
     }
 
@@ -83,7 +92,7 @@ const editProduct = asyncHandler(async (req, res) => {
             $set: updatedFields
         },
         {
-            new: true
+            returnDocument: "after"
         }
     )
 
@@ -132,8 +141,11 @@ const getProduct = asyncHandler(async (req, res) => {
     const product = await Product.find()
 
     return res.status(200).json(
-        200,
-        "Product fetched Sucessfully!!"
+        new Apiresponse(
+            200,
+            product,
+            "Product fetched Sucessfully!!"
+        )
     )
 })
 const getProductDetails = asyncHandler(async (req, res) => {

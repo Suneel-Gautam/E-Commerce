@@ -20,6 +20,11 @@ const productSchema = new mongoose.Schema({
         type: String,
         default: 0
     },
+    size: [{
+        type: String,
+        enum: ["S", "M", "L", "XL", "2XL", "3XL"],
+        required: true
+    }],
     category: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Category',
@@ -27,7 +32,8 @@ const productSchema = new mongoose.Schema({
     },
     owner: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: "User"
+        ref: "User",
+        required: true,
     }
 
 })
