@@ -1,0 +1,38 @@
+.shopPage {
+  margin-top: 60px;
+  padding: 20px 30px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.leftSide {
+  background-color: rgb(244, 242, 242);
+  width: 20%;
+  padding: 20px 20px;
+}
+.leftSide span {
+  font-size: 26px;
+  font-weight: 600;
+}
+.leftSide .catogeryFilter {
+  margin-top: 26px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.leftSide .catogeryFilter input {
+  width: 16px;
+}
+.leftSide .catogeryFilter .item {
+  display: flex;
+  gap: 26px;
+}
+.leftSide .catogeryFilter .item p {
+  font-size: 18px;
+}
+.rightSide {
+  width: 76%;
+}
+
+@media screen and (max-width: 750px) {
+}

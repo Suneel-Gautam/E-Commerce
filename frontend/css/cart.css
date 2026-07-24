@@ -18,9 +18,11 @@
   font-weight: 600;
 }
 .cartContainer .leftSide .cardItems table {
-  margin-top: 10px;
   width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 30px;
 }
+
 .cartContainer .leftSide .cardItems th {
   text-align: left;
   font-weight: 600;
@@ -29,6 +31,12 @@
 }
 .cartContainer .leftSide .cardItems .product {
   width: 40%;
+  display: flex;
+  gap: 10px;
+}
+.product img {
+  width: 50px;
+  height: 50px;
 }
 
 @media screen and (max-width: 780px) {
@@ -66,16 +74,47 @@
 
 .cartContainer .rightSide {
   margin-top: 10px;
-  background-color: rgb(241, 244, 244);
-  min-height: 300px;
+  background-color: rgb(231, 235, 230);
   min-width: 28%;
-  padding: 20px 30px;
-  border: 2px solid rgb(186, 144, 113);
+  padding: 20px 0px 0px 0px;
   border-radius: 4px;
+  max-height: 300px;
 }
 
 .cartContainer .rightSide span {
+  padding: 0px 20px;
   font-size: 24px;
   font-weight: 500;
 }
+.cartContainer .orderSummary {
+  padding: 0px 30px;
+  margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.cartContainer .orderSummary .summaryItems {
+  display: flex;
+  justify-content: space-between;
+}
+.cartContainer .total {
+  padding: 0px 30px;
+  margin-top: 40px;
+  display: flex;
+  justify-content: space-between;
+}
 
+.cartContainer .checkoutBtn {
+  margin-top: 50px;
+  width: 100%;
+  padding: 16px 20px;
+  background-color: rgb(181, 53, 53);
+  outline: none;
+  color: white;
+  border: none;
+  transition: all 300ms ease-in-out;
+  cursor: pointer;
+}
+.cartContainer .checkoutBtn:hover {
+  scale: 1.04;
+}
