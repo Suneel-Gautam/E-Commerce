@@ -5,6 +5,7 @@ import categoryRoute from './routes/category.route.js'
 import authRoute from './routes/auth.route.js'
 import productRoute from './routes/product.route.js'
 import cartRoute from './routes/cart.route.js'
+import orderRoute from './routes/order.route.js'
 
 
 
@@ -21,6 +22,7 @@ app.use('/api/v1/auth', authRoute)
 app.use('/api/v1/category', categoryRoute)
 app.use('/api/v1/product', productRoute)
 app.use('/api/v1/cart', cartRoute)
+app.use('/api/v1/order', orderRoute)
 
 
 export { app }
