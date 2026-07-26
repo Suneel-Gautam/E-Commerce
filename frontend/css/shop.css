@@ -3,15 +3,33 @@
   padding: 20px 30px;
   display: flex;
   justify-content: space-between;
+  gap: 50px;
 }
 
 .leftSide {
-  background-color: rgb(244, 242, 242);
-  width: 20%;
+  background-color: rgb(23, 55, 40);
+  width: 20rem;
   padding: 20px 20px;
+  color: aliceblue;
+  max-height: 500px;
+  border-radius: 10px;
 }
-.leftSide span {
-  font-size: 26px;
+.leftSide .top-header {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border-bottom: 1px solid rgb(211, 211, 211);
+  padding-bottom: 20px;
+}
+.leftSide .top-header span {
+  font-size: 25px;
+  font-weight: 600;
+}
+.leftSide .category {
+  margin-top: 20px;
+}
+.leftSide h1 {
+  font-size: 18px;
   font-weight: 600;
 }
 .leftSide .catogeryFilter {
@@ -31,8 +49,21 @@
   font-size: 18px;
 }
 .rightSide {
-  width: 76%;
+  width: 100%;
+}
+
+.rightSide .cards {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
 }
 
 @media screen and (max-width: 750px) {
+  .shopPage {
+    margin-top: 60px;
+    padding: 20px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
 }
