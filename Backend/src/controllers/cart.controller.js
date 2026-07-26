@@ -146,5 +146,6 @@ const removeCart = asyncHandler(async (req, res) => {
 export {
     getCart,
     addCart,
-    editCart
+    editCart,
+    removeCart
 }

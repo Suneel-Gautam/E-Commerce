@@ -4,6 +4,7 @@ import cors from 'cors'
 import categoryRoute from './routes/category.route.js'
 import authRoute from './routes/auth.route.js'
 import productRoute from './routes/product.route.js'
+import cartRoute from './routes/cart.route.js'
 
 
 
@@ -19,6 +20,7 @@ app.use(cookieParser())
 app.use('/api/v1/auth', authRoute)
 app.use('/api/v1/category', categoryRoute)
 app.use('/api/v1/product', productRoute)
+app.use('/api/v1/cart', cartRoute)
 
 
 export { app }
