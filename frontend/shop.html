@@ -14,36 +14,76 @@
     <div class="backgroundNavColor" id="navBarContainer"></div>
     <div class="container shopPage">
         <div class="leftSide">
-
             <div class="top-header">
-                    <i class="fa-solid fa-filter"></i>
-                    <span>Filter</span>
+                <i class="fa-solid fa-filter"></i>
+                <span>Filter</span>
             </div>
-
-
             <div class="category">
                 <h1> Category </h1>
                 <div class="search">
+                    <input type="text" placeholder="Search Category">
                 </div>
                 <div class="catogeryFilter">
-                    <div class="item">
-                        <input type="checkbox" />
-                        <p>Shoes</p>
-                    </div>
-                    <div class="item">
-                        <input type="checkbox" />
-                        <p>Shoes</p>
-                    </div>
-                    <div class="item">
-                        <input type="checkbox" />
-                        <p>Shoes</p>
-                    </div>
+
                 </div>
             </div>
+            <div class="price">
+                <h1>Price</h1>
+                <input type="range" min="0" max="5000">
+                <div class="priceRange">
+                    <p>0</p>
+                    <p class="currentPrice">0</p>
+                    <p>700</p>
+                </div>
+            </div>
+            <div class="size">
+                <h1>Size</h1>
+                <div class="sizeItems">
+                </div>
+            </div>
+        </div>
 
+        <!-- //leftSide small tab filter -->
+        <div class="leftSideMobile">
+            <div class="closeBtn">
+                <i class="fa-solid fa-xmark" style="font-size: 30px;"></i>
+            </div>
+            <div class="top-header">
+                <i class="fa-solid fa-filter"></i>
+                <span>Filter</span>
+            </div>
+            <div class="category">
+                <h1> Category </h1>
+                <div class="search">
+                    <input type="text" placeholder="Search Category">
+                </div>
+                <div class="catogeryFilter" id="category-Filter">
+                </div>
+            </div>
+            <div class="price">
+                <h1>Price</h1>
+                <input type="range" min="0" max="5000">
+                <div class="priceRange">
+                    <p>0</p>
+                    <p class="currentPrice">0</p>
+                    <p>700</p>
+                </div>
+            </div>
+            <div class="size">
+                <h1>Size</h1>
+                <div class="sizeItems" id="size-Items">
+                </div>
+            </div>
         </div>
 
         <div class="rightSide">
+            <div class="filterOpen">
+                <i class="fa-solid fa-filter"></i>
+                <span>
+                    Filter Product
+                </span>
+
+            </div>
             <div class="cards">
 
             </div>
