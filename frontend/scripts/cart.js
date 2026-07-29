@@ -1,4 +1,3 @@
-
 const cardItem = [
     {
         productImage: '../images/image.png',
@@ -15,7 +14,6 @@ const cardItem = [
         quantity: 2,
     },
 ]
-
 
 const cardItems = document.querySelector('.cardItems')
 
@@ -49,8 +47,6 @@ cardItem.forEach((item) => {
                             <div class="deleteBtn"><i class="fa-solid fa-trash-can"></i></div>
                         </div>
                     </div>
-
-
                 </div>
     `
 
