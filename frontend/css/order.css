@@ -9,6 +9,10 @@
 }
 .contentSection {
   margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
 }
 .item {
   border: 2px solid rgba(190, 145, 145, 0.6);
@@ -114,7 +118,6 @@
 .headerSection .arrow:hover {
   scale: 1.1;
 }
-
 .userDetails {
   padding: 10px 20px;
   margin-top: 10px;
@@ -147,4 +150,59 @@
 .containers {
   display: flex;
   justify-content: space-between;
+}
+
+@media screen and (max-width: 900px) {
+  .containers {
+    display: flex;
+    flex-direction: column;
+  }
+  .userContent {
+    width: 100%;
+    padding-bottom: 20px;
+    border-bottom: 1px solid rgb(194, 190, 190);
+  }
+  .Subtotal {
+    width: 100%;
+  }
+  .data {
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    gap: 20px;
+    font-size: 20px;
+  }
+}
+
+@media screen and (max-width: 850px) {
+  .headerSection {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .headerSection .statusBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+  .firstContent {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .data {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    gap: 20px;
+    font-size: 20px;
+  }
 }
