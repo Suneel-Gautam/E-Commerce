@@ -174,7 +174,6 @@ myOrders.forEach((item) => {
                         </div>
                     </div>
                 </div>
-            
             ${orderItemHtml}   
                 <div class="userDetails">
                     <h1>
