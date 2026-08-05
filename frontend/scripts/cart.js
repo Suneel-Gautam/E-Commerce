@@ -1,4 +1,4 @@
-const cardItem = [
+let cardItem = [
     {
         id: 1,
         productImage: '../images/image.png',
@@ -46,7 +46,7 @@ function renderCart() {
                                 <span>${item.quantity}</span>
                                 <button class="increaseId" data-id="${item.id}">+</button>
                             </div>
-                            <div class="deleteBtn"><i class="fa-solid fa-trash-can"></i></div>
+                            <div class="deleteBtn" data-id="${item.id}"><i class="fa-solid fa-trash-can"></i></div>
                         </div>
                     </div>
                 </div>
@@ -59,7 +59,6 @@ function renderCart() {
 
 function addCart() {
     const decreaseBtn = document.querySelectorAll('.decreaseId')
-
     decreaseBtn.forEach((btn) => {
         btn.addEventListener('click', () => {
             const id = Number(btn.dataset.id)
@@ -71,9 +70,7 @@ function addCart() {
             renderCart()
         })
     })
-
     const increaseBtn = document.querySelectorAll('.increaseId')
-
     increaseBtn.forEach((btn) => {
         btn.addEventListener('click', () => {
             const id = Number(btn.dataset.id)
@@ -83,12 +80,20 @@ function addCart() {
         })
     })
 
+    const deleteBtn = document.querySelectorAll('.deleteBtn')
 
+    deleteBtn.forEach((btn) => {
+        btn.addEventListener('click', () => {
+            const id = Number(btn.dataset.id)
+            cardItem = cardItem.filter(item => item.id !== id)
+            renderCart()
 
-
-
+        })
+    })
 
 }
+
+
 
 
 renderCart()
