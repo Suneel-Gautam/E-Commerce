@@ -14,7 +14,7 @@
 
     <div class="mainContainer">
 
-        <div class="loginContainer">
+        <div class="loginContainer " id="login-container">
             <h1>
                 Login
             </h1>
@@ -32,7 +32,7 @@
             </div>
 
             <button>
-                Sign up
+                Sign In
             </button>
 
 
@@ -47,51 +47,62 @@
             </div>
 
             <div class="anotherPagelink">
-                Are you new? <span>Create an Account?</span>
+                Are you new? <span id="gotoregisterPage">Create an Account?</span>
             </div>
         </div>
 
 
-        <div class="registerContainer ">
+        <div class="registerContainer hideContainer" id="register-container">
             <h1>
                 Register
             </h1>
-            <div class="inputBox">
-                <label for="">Username or email</label>
-                <input type="text">
+            <div class="registerinputBox">
+                <label for="">Username</label>
+                <input type="text" placeholder="Enter Your username">
             </div>
-            <div class="inputBox">
+            <div class="registerinputBox">
+                <label for="">Email</label>
+                <input type="text" placeholder="Enter Your email">
+            </div>
+            <div class="registerinputBox">
+                <label for="">Phonenumber</label>
+                <input type="text" placeholder="98*********">
+            </div>
+            <div class="registerinputBox">
                 <label for="">Password</label>
-                <input type="text">
+                <input type="text" placeholder="*********">
+            </div>
+            <div class="registerinputBox">
+                <label for="">Confirm Password</label>
+                <input type="text" placeholder="*********">
             </div>
 
-            <div class="forgetPassword">
-                Forgot password?
-            </div>
-
-            <button>
-                Sign up
+            <button class="signup">
+                Sign Up
             </button>
 
-
             <div class="sepration">
-                ------ or -------
+                <div class="line"></div> or
+                <div class="line"></div>
             </div>
 
             <div class="google">
+                <i class="fa-brands fa-google"></i>
                 Sign in with Google
             </div>
 
-            <div>
-                Already Have Account? <span>Create an Account?</span>
+            <div class="anotherPagelink">
+                Already Have Account? <span id="gotologin">Login</span>
             </div>
         </div>
 
-        <div class="backHome">
+        <a class="backHome" href="/index.html">
             Back to Home
-        </div>
+        </a>
 
     </div>
+
+    <script src="/scripts/auth.js"></script>
 
 </body>
 
