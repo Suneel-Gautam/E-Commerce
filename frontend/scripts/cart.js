@@ -1,21 +1,4 @@
-let cardItem = [
-    {
-        id: 1,
-        productImage: '../images/image.png',
-        name: "Shoes Caliber 250",
-        price: "1500",
-        size: "M",
-        quantity: 1,
-    },
-    {
-        id: 2,
-        productImage: '../images/image.png',
-        name: "Shoes Caliber1 250",
-        price: "1500",
-        size: "M",
-        quantity: 1,
-    },
-]
+import { cardItem } from "../components/product.js"
 
 const cardItems = document.querySelector('.cardItems')
 
@@ -92,8 +75,6 @@ function addCart() {
     })
 
 }
-
-
 
 
 renderCart()

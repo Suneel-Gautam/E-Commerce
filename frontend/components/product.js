@@ -37,8 +37,6 @@ function renderTags(tags = []) {
 }
 
 
-
-
 export const products = [
   {
     image: "./images/image.png",
@@ -97,4 +95,23 @@ export const size = [
   "XL",
   "2XL",
   "3XL"
+]
+
+export let cardItem = [
+    {
+        id: 1,
+        productImage: '../images/image.png',
+        name: "Shoes Caliber 250",
+        price: "1500",
+        size: "M",
+        quantity: 1,
+    },
+    {
+        id: 2,
+        productImage: '../images/image.png',
+        name: "Shoes Caliber1 250",
+        price: "1500",
+        size: "M",
+        quantity: 1,
+    },
 ]
