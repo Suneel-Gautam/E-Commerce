@@ -15,7 +15,6 @@ products.forEach((item) => (
 
 cards.innerHTML = card
 
-
 const catogeryFilter = document.querySelector('.catogeryFilter')
 const categoryFilterCon = document.querySelector('#category-Filter')
 

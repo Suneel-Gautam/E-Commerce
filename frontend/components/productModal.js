@@ -1,4 +1,3 @@
-
 export function productModal(product) {
     return `
         <div class="productDetailsModal">
@@ -20,9 +19,9 @@ export function productModal(product) {
                 <div class="quantityWrapper">
                     <span>Quantity</span>
                     <div class="quantity">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
+                        <button id="decreaseBtn">-</button>
+                        <span id="quantity">1</span>
+                        <button id="increaseBtn">+</button>
                     </div>
                 </div>
                 <div class="buttons">
@@ -50,7 +49,37 @@ export function detailOpen(product, container) {
     closeBtn.addEventListener('click', () => {
         modalDiv.remove()
     })
-
+    quantityButton()
 }
+
+
+function quantityButton() {
+    const decreaseBtn = document.querySelector('#decreaseBtn')
+    const increaseBtn = document.querySelector('#increaseBtn')
+    const quantityCount = document.querySelector('#quantity')
+
+    let count = 1
+    if (decreaseBtn) {
+        decreaseBtn.addEventListener('click', () => {
+            if (count > 1) {
+                count --
+                quantityCount.innerHTML = count
+                console.log(count)
+
+            }
+        })
+    }
+    if (increaseBtn) {
+        increaseBtn.addEventListener('click', () => {
+            count++
+            quantityCount.innerHTML = count
+            console.log(count)
+
+        })
+    }
+}
+
+
+
 
 
