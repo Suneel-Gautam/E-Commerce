@@ -1,31 +1,29 @@
-export function productCard(image, category, title, tags, description, price) {
+export function productCard(product) {
   return `
-  <div class="CardConatiner">
+  <div class="CardConatiner"  data-id="${product._id}">
     <div class="imageDiv">
-      <img src=${image} alt="" />
-      <div class="catagory">${category}</div>
+      <img src=${product.image} alt="" />
+      <div class="catagory">${product.category}</div>
     </div>
     <div class="contentArea">
-      <div class="title">${title}</div>
+      <div class="title">${product.title}</div>
       <div class="tags">
-      ${renderTags(tags)}
+      ${renderTags(product.tags)}
       </div>
       <p>
-        ${description}
+        ${product.description}
       </p>
 
       <div class="bottomRow">
         <div>
           <div class="price">Price</div>
-          <span> ${price} </span>
+          <span> ${product.price} </span>
         </div>
         <div class="btn">Add to Cart</div>
       </div>
     </div>
   </div>
     `
-
-  CardConatiner
 }
 
 function renderTags(tags = []) {
@@ -39,6 +37,7 @@ function renderTags(tags = []) {
 
 export const products = [
   {
+    _id: 1,
     image: "./images/image.png",
     category: "Pizza",
     title: "Pepperoni Pizza",
@@ -47,6 +46,7 @@ export const products = [
     price: "$12.99"
   },
   {
+    _id: 2,
     image: "./images/image.png",
     category: "Burger",
     title: "Chicken Burger",
@@ -55,6 +55,7 @@ export const products = [
     price: "$8.49"
   },
   {
+    _id: 3,
     image: "./images/image.png",
     category: "Dessert",
     title: "Chocolate Cake",
@@ -63,6 +64,7 @@ export const products = [
     price: "$6.99"
   },
   {
+    _id: 4,
     image: "./images/image.png",
     category: "Dessert",
     title: "Chocolate Cake",
@@ -98,20 +100,20 @@ export const size = [
 ]
 
 export let cardItem = [
-    {
-        id: 1,
-        productImage: '../images/image.png',
-        name: "Shoes Caliber 250",
-        price: "1500",
-        size: "M",
-        quantity: 1,
-    },
-    {
-        id: 2,
-        productImage: '../images/image.png',
-        name: "Shoes Caliber1 250",
-        price: "1500",
-        size: "M",
-        quantity: 1,
-    },
+  {
+    id: 1,
+    productImage: '../images/image.png',
+    name: "Shoes Caliber 250",
+    price: "1500",
+    size: "M",
+    quantity: 1,
+  },
+  {
+    id: 2,
+    productImage: '../images/image.png',
+    name: "Shoes Caliber1 250",
+    price: "1500",
+    size: "M",
+    quantity: 1,
+  },
 ]
