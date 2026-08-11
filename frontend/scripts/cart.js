@@ -19,9 +19,9 @@ let cardItem = [
 
 const cardItems = document.querySelector('.cardItems')
 
-function renderCart() {
+function renderCart(cartProduct) {
     let cardHtml = ""
-    cardItem.forEach((item) => {
+    cartProduct.forEach((item) => {
         cardHtml += `
       <div class="item">
                     <input type="checkbox" name="" id="">
@@ -51,11 +51,11 @@ function renderCart() {
                     </div>
                 </div>
     `
-
     })
     cardItems.innerHTML = cardHtml
     addCart()
 }
+
 
 function addCart() {
     const decreaseBtn = document.querySelectorAll('.decreaseId')
@@ -67,7 +67,7 @@ function addCart() {
             if (product.quantity > 1) {
                 product.quantity--
             }
-            renderCart()
+            renderCart(cardItem)
         })
     })
     const increaseBtn = document.querySelectorAll('.increaseId')
@@ -76,7 +76,7 @@ function addCart() {
             const id = Number(btn.dataset.id)
             const product = cardItem.find(item => item.id === id)
             product.quantity++
-            renderCart()
+            renderCart(cardItem)
         })
     })
 
@@ -86,12 +86,11 @@ function addCart() {
         btn.addEventListener('click', () => {
             const id = Number(btn.dataset.id)
             cardItem = cardItem.filter(item => item.id !== id)
-            renderCart()
-
+            renderCart(cardItem)
         })
     })
 
 }
 
 
-renderCart()
+renderCart(cardItem)
