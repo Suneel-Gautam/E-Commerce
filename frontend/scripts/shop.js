@@ -6,8 +6,6 @@ import { detailOpen } from "../components/productModal.js";
 import { products } from "../components/product.js";
 
 
-
-
 const searchCategory = document.querySelectorAll('.searchCategory')
 
 // working search feature
@@ -22,9 +20,6 @@ searchCategory.forEach(inputSearch => {
     })
 })
 
-
-
-
 const catogeryFilter = document.querySelector('.catogeryFilter')
 const categoryFilterCon = document.querySelector('#category-Filter')
 
@@ -33,14 +28,24 @@ let categoryHtml = ""
 category.forEach((item) => {
     categoryHtml += `
       <div class="item">
-       <input type="checkbox" />
-       <p>${item.name}</p>
+       <input type="checkbox" id="${item.name}" value="${item.name}" />
+       <label for="${item.name}">${item.name}</label>
        </div>
     `
 })
 catogeryFilter.innerHTML = categoryHtml
 categoryFilterCon.innerHTML = categoryHtml
 
+const inputCheckbox = document.querySelectorAll('.item')
+
+inputCheckbox.forEach(inputbox => {
+    inputbox.addEventListener('click', () => {
+
+
+    })
+
+
+})
 
 const sizeItems = document.querySelector('.sizeItems')
 const sizeItemsCon = document.querySelector('#size-Items')

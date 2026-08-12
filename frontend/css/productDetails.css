@@ -36,7 +36,7 @@
 
 /* CLOSE BUTTON */
 
-.closeBtn {
+.productDetailsModal .closeBtn {
   position: absolute;
 
   top: 18px;
@@ -61,7 +61,7 @@
   transition: 200ms ease;
 }
 
-.closeBtn:hover {
+.productDetailsModal .closeBtn:hover {
   background: #e8e8e8;
   transform: rotate(90deg);
 }
