@@ -1,10 +1,11 @@
 import { productCard } from "../components/product.js";
 import { category } from "../components/product.js";
-import { size } from "../components/product.js";
 import { productModal } from "../components/productModal.js";
 import { detailOpen } from "../components/productModal.js";
 import { products } from "../components/product.js";
 
+
+const resetButton = document.querySelector('#resetButton')
 
 const searchCategory = document.querySelectorAll('.searchCategory')
 
@@ -60,10 +61,8 @@ inputCheckbox.forEach(inputbox => {
 })
 
 ///price filter
-
 const inputMin = document.querySelector('#min')
 const inputMax = document.querySelector('#max')
-
 
 function filterPrices() {
     let minPrice = Number(inputMin.value)
@@ -87,36 +86,6 @@ inputMin.addEventListener('input', filterPrices)
 inputMax.addEventListener('input', filterPrices)
 
 
-
-
-///
-const sizeItems = document.querySelector('.sizeItems')
-const sizeItemsCon = document.querySelector('#size-Items')
-
-let sizeHtml = ""
-
-size.forEach((item) => {
-    sizeHtml += `
-    <span class="sizeItem">
-     ${item}
-     </span>
-    `
-})
-sizeItems.innerHTML = sizeHtml
-sizeItemsCon.innerHTML = sizeHtml
-
-/// size filter section
-
-
-const sizeItem = document.querySelectorAll('.sizeItem')
-sizeItem.forEach(item => {
-    item.addEventListener('click', () => {
-        console.log(item.innerText.trim())
-
-    })
-})
-
-
 // filter close for mobile screen
 const filterClose = document.querySelector('.closeBtn')
 const leftSideMobile = document.querySelector('.leftSideMobile')
@@ -133,7 +102,6 @@ filterOpen.addEventListener('click', () => {
 
 
 // card section start here 
-
 
 const cards = document.querySelector('.cards')
 
@@ -170,7 +138,20 @@ cardsContainer.forEach((card) => {
 })
 
 
+resetButton.addEventListener('click', () => {
+    searchCategory.forEach(inputbox => {
+        inputbox.value = ''
+    });
+    inputCheckbox.forEach(checkbox =>{
+        checkbox.checked = false
 
+    })
+    inputMax.value = "";
+    inputMin.value = "";
+    renderProduct(products)
+
+
+})
 
 
 

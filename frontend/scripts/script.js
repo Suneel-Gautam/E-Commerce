@@ -9,7 +9,7 @@ selectFile.style.display = 'none'
 // feature product section 
 const featureProductSection = document.querySelector('#featureProductsSection')
 let featureProductHtml = ""
-products.forEach((item) => (
+products.splice(0,4).forEach((item) => (
   featureProductHtml += productCard(
     item
   )))

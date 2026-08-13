@@ -39,64 +39,93 @@ export const products = [
   {
     _id: 1,
     image: "./images/image.png",
-    category: "Pizza",
-    title: "Pepperoni Pizza",
-    tags: ["Cheesy", "Hot", "Popular"],
-    description: "Freshly baked pepperoni pizza with extra cheese and crispy crust.",
-    price: 12.99
+    category: "Sneakers",
+    title: "Nike Air Max 270",
+    size: [6, 7, 8, 9, 10, 11],
+    tags: ["Sporty", "Popular", "Comfortable"],
+    description: "Comfortable everyday sneakers with a lightweight design.",
+    price: 129.99
   },
   {
     _id: 2,
     image: "./images/image.png",
-    category: "Burger",
-    title: "Chicken Burger",
-    tags: ["Spicy", "Grilled"],
-    description: "Juicy grilled chicken burger served with fresh lettuce and cheese.",
-    price: 8.49
+    category: "Running",
+    title: "Adidas Ultraboost",
+    size: [7, 8, 9, 10, 11, 12],
+    tags: ["Running", "Lightweight", "Comfortable"],
+    description: "High-performance running shoes with responsive cushioning.",
+    price: 149.99
   },
   {
     _id: 3,
     image: "./images/image.png",
-    category: "Dessert",
-    title: "Chocolate Cake",
-    tags: ["Sweet", "Best Seller"],
-    description: "Rich chocolate cake topped with creamy chocolate frosting.",
-    price: 6.99
+    category: "Casual",
+    title: "Converse Chuck Taylor",
+    size: [6, 7, 8, 9, 10, 11],
+    tags: ["Classic", "Casual", "Popular"],
+    description: "Classic casual sneakers with a timeless canvas design.",
+    price: 79.99
   },
   {
     _id: 4,
     image: "./images/image.png",
-    category: "Dessert",
-    title: "Chocolate Cake",
-    tags: ["Sweet", "Best Seller"],
-    description: "Rich chocolate cake topped with creamy chocolate frosting.",
-    price: 6.99
+    category: "Basketball",
+    title: "Jordan Basketball Shoes",
+    size: [8, 9, 10, 11, 12, 13],
+    tags: ["Basketball", "Sporty", "Premium"],
+    description: "High-performance basketball shoes designed for stability and grip.",
+    price: 179.99
   },
+  {
+    _id: 5,
+    image: "./images/image.png",
+    category: "Formal",
+    title: "Classic Leather Oxford",
+    size: [7, 8, 9, 10, 11, 12],
+    tags: ["Formal", "Leather", "Elegant"],
+    description: "Premium leather Oxford shoes perfect for formal occasions.",
+    price: 119.99
+  },
+  {
+    _id: 6,
+    image: "./images/image.png",
+    category: "Boots",
+    title: "Timberland Classic Boots",
+    size: [7, 8, 9, 10, 11, 12],
+    tags: ["Boots", "Outdoor", "Durable"],
+    description: "Durable outdoor boots designed for comfort and all-weather use.",
+    price: 159.99
+  }
 ];
 
 export const category = [
-  {
-    name: "Pizza",
-    color: "red"
-  },
-  {
-    name: "Burger",
-    color: "red"
-  },
-  {
-    name: "Dessert",
-    color: "red"
-  },
-]
+    {
+        name: "Sneakers",
+        color: "red"
+    },
+    {
+        name: "Running",
+        color: "red"
+    },
+    {
+        name: "Casual",
+        color: "red"
+    },
+    {
+        name: "Basketball",
+        color: "red"
+    },
+    {
+        name: "Formal",
+        color: "red"
+    },
+    {
+        name: "Boots",
+        color: "red"
+    }
+];
 
-export const size = [
-  "S",
-  "M",
-  "L",
-  "XL",
-  "2XL",
-  "3XL"
-]
+
 
 
 export const cardItem = [
