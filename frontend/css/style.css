@@ -171,11 +171,11 @@
   align-items: center;
 }
 .contentArea span {
-  font-size: 28px;
+  font-size: 22px;
   font-weight: 500;
 }
 .contentArea .price {
-  font-size: 14px;
+  font-size: 18px;
 }
 .contentArea .btn {
   background-color: var(--button-color);

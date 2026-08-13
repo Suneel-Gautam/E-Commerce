@@ -36,17 +36,60 @@ category.forEach((item) => {
 catogeryFilter.innerHTML = categoryHtml
 categoryFilterCon.innerHTML = categoryHtml
 
-const inputCheckbox = document.querySelectorAll('.item')
+
+const inputCheckbox = document.querySelectorAll('input[type="checkbox"]')
 
 inputCheckbox.forEach(inputbox => {
-    inputbox.addEventListener('click', () => {
+    inputbox.addEventListener('change', (e) => {
+        const selectedCatgory = [...inputCheckbox]
+            .filter(checkbox => checkbox.checked)
+            .map(checkbox => checkbox.value)
 
+        if (selectedCatgory.length === 0) {
+            renderProduct(products)
+            return
+        }
+        const filterProducts = products.filter(item =>
+            selectedCatgory.includes(item.category)
+        )
 
+        renderProduct(filterProducts)
     })
 
 
 })
 
+///price filter
+
+const inputMin = document.querySelector('#min')
+const inputMax = document.querySelector('#max')
+
+
+function filterPrices() {
+    let minPrice = Number(inputMin.value)
+    let maxPrice = Number(inputMax.value)
+
+    let filerPriceProduct = products.filter(item => {
+
+        if (inputMin.value && item.price < minPrice) {
+            return false
+        }
+        if (inputMax.value && item.price > maxPrice) {
+            return false
+        }
+        return true
+    })
+    renderProduct(filerPriceProduct)
+
+
+}
+inputMin.addEventListener('input', filterPrices)
+inputMax.addEventListener('input', filterPrices)
+
+
+
+
+///
 const sizeItems = document.querySelector('.sizeItems')
 const sizeItemsCon = document.querySelector('#size-Items')
 
@@ -54,13 +97,24 @@ let sizeHtml = ""
 
 size.forEach((item) => {
     sizeHtml += `
-    <span class="">
+    <span class="sizeItem">
      ${item}
      </span>
     `
 })
 sizeItems.innerHTML = sizeHtml
 sizeItemsCon.innerHTML = sizeHtml
+
+/// size filter section
+
+
+const sizeItem = document.querySelectorAll('.sizeItem')
+sizeItem.forEach(item => {
+    item.addEventListener('click', () => {
+        console.log(item.innerText.trim())
+
+    })
+})
 
 
 // filter close for mobile screen
@@ -85,8 +139,10 @@ const cards = document.querySelector('.cards')
 
 function renderProduct(productsList) {
     const notFoundMessage = document.querySelector('.notFoundMessage')
-    if (Array.isArray(productsList) && productsList.length === 0) {
+    if (productsList.length === 0) {
         notFoundMessage.style.display = "flex"
+    } else {
+        notFoundMessage.style.display = "none"
     }
     let card = ""
     productsList.forEach((item) => (

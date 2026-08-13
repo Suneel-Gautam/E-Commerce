@@ -57,6 +57,7 @@
 .leftSide .catogeryFilter .item {
   display: flex;
   gap: 26px;
+  user-select: none;
 }
 .leftSide .catogeryFilter .item p {
   font-size: 18px;
@@ -103,12 +104,20 @@
 }
 .leftSide .price .priceRange {
   display: flex;
+  align-items: center;
+  gap: 20px;
   justify-content: space-between;
+}
+.priceRange input {
+  padding: 20px 10px;
+  height: 300px;
+  outline: none;
+  border-radius: 4px;
+  border: none;
 }
 .leftSide .price .priceRange .currentPrice {
   display: none;
 }
-
 .leftSideMobile {
   display: none;
 }

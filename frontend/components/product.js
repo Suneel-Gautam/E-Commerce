@@ -17,7 +17,7 @@ export function productCard(product) {
       <div class="bottomRow">
         <div>
           <div class="price">Price</div>
-          <span> ${product.price} </span>
+          <span>Rs ${product.price} </span>
         </div>
         <div class="btn">Add to Cart</div>
       </div>
@@ -43,7 +43,7 @@ export const products = [
     title: "Pepperoni Pizza",
     tags: ["Cheesy", "Hot", "Popular"],
     description: "Freshly baked pepperoni pizza with extra cheese and crispy crust.",
-    price: "$12.99"
+    price: 12.99
   },
   {
     _id: 2,
@@ -52,7 +52,7 @@ export const products = [
     title: "Chicken Burger",
     tags: ["Spicy", "Grilled"],
     description: "Juicy grilled chicken burger served with fresh lettuce and cheese.",
-    price: "$8.49"
+    price: 8.49
   },
   {
     _id: 3,
@@ -61,7 +61,7 @@ export const products = [
     title: "Chocolate Cake",
     tags: ["Sweet", "Best Seller"],
     description: "Rich chocolate cake topped with creamy chocolate frosting.",
-    price: "$6.99"
+    price: 6.99
   },
   {
     _id: 4,
@@ -70,7 +70,7 @@ export const products = [
     title: "Chocolate Cake",
     tags: ["Sweet", "Best Seller"],
     description: "Rich chocolate cake topped with creamy chocolate frosting.",
-    price: "$6.99"
+    price: 6.99
   },
 ];
 
