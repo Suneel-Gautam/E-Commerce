@@ -3,7 +3,7 @@ import { category } from "../components/product.js";
 import { productModal } from "../components/productModal.js";
 import { detailOpen } from "../components/productModal.js";
 import { products } from "../components/product.js";
-
+import { buttonClick } from "../components/product.js";
 
 const resetButton = document.querySelector('#resetButton')
 
@@ -132,6 +132,7 @@ const cardsContainer = document.querySelectorAll('.CardConatiner')
 const shopContainer = document.querySelector('body')
 cardsContainer.forEach((card) => {
     card.addEventListener('click', () => {
+        buttonClick()
         let product = products.find(item => item._id === Number(card.dataset.id))
         detailOpen(product, shopContainer)
     })
@@ -142,7 +143,7 @@ resetButton.addEventListener('click', () => {
     searchCategory.forEach(inputbox => {
         inputbox.value = ''
     });
-    inputCheckbox.forEach(checkbox =>{
+    inputCheckbox.forEach(checkbox => {
         checkbox.checked = false
 
     })

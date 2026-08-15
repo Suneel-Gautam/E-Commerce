@@ -64,8 +64,6 @@ function quantityButton() {
             if (count > 1) {
                 count --
                 quantityCount.innerHTML = count
-                console.log(count)
-
             }
         })
     }
@@ -73,8 +71,6 @@ function quantityButton() {
         increaseBtn.addEventListener('click', () => {
             count++
             quantityCount.innerHTML = count
-            console.log(count)
-
         })
     }
 }

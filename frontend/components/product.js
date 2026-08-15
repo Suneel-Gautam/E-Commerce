@@ -19,11 +19,26 @@ export function productCard(product) {
           <div class="price">Price</div>
           <span>Rs ${product.price} </span>
         </div>
-        <div class="btn">Add to Cart</div>
+        <button class="btn" id="buyButton" data-id="${product._id}">Buy Now</div>
       </div>
     </div>
   </div>
     `
+}
+
+export function buttonClick() {
+  const buyButton = document.querySelectorAll('.btn')
+  buyButton.forEach((btn)=>{
+    btn.addEventListener('click',(e)=>{
+      e.stopPropagation()
+      console.log(btn)
+    })
+  })
+  // buyButton.addEventListener('click', (e) => {
+  //   e.stopPropagation()
+  //   console.log(buyButton)
+
+  // })
 }
 
 function renderTags(tags = []) {
@@ -33,7 +48,6 @@ function renderTags(tags = []) {
     )).join("")
   )
 }
-
 
 export const products = [
   {
@@ -97,32 +111,31 @@ export const products = [
     price: 159.99
   }
 ];
-
 export const category = [
-    {
-        name: "Sneakers",
-        color: "red"
-    },
-    {
-        name: "Running",
-        color: "red"
-    },
-    {
-        name: "Casual",
-        color: "red"
-    },
-    {
-        name: "Basketball",
-        color: "red"
-    },
-    {
-        name: "Formal",
-        color: "red"
-    },
-    {
-        name: "Boots",
-        color: "red"
-    }
+  {
+    name: "Sneakers",
+    color: "red"
+  },
+  {
+    name: "Running",
+    color: "red"
+  },
+  {
+    name: "Casual",
+    color: "red"
+  },
+  {
+    name: "Basketball",
+    color: "red"
+  },
+  {
+    name: "Formal",
+    color: "red"
+  },
+  {
+    name: "Boots",
+    color: "red"
+  }
 ];
 
 
