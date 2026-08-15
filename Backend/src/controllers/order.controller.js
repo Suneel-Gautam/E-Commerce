@@ -1,5 +1,5 @@
 import { ApiError } from "../utils/apiError.js";
-import { Apiresponse } from "../utils/apiResponse";
+import { Apiresponse } from "../utils/apiResponse.js";
 import { asyncHandler } from "../utils/asyncHandler.js";
 import Order from "../models/order.model.js";
 

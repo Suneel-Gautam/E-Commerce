@@ -2,6 +2,7 @@ import { asyncHandler } from "../utils/asyncHandler.js";
 import { ApiError } from "../utils/apiError.js";
 import { Apiresponse } from "../utils/apiResponse.js";
 import Cart from "../models/cart.model.js";
+import Product from "../models/product.model.js";
 
 
 const getCart = asyncHandler(async (req, res) => {
@@ -23,7 +24,6 @@ const getCart = asyncHandler(async (req, res) => {
         )
     )
 })
-
 const addCart = asyncHandler(async (req, res) => {
 
     if (!req.user?._id) {
@@ -33,18 +33,20 @@ const addCart = asyncHandler(async (req, res) => {
         )
     }
     const { product, quantity, size } = req.body
+
     if (!product || !quantity || !size) {
         throw new ApiError(
             400,
             "All feilds required in cart!!"
         )
     }
+
     const productData = await Product.findById(product)
 
     if (!productData) {
         throw new ApiError(
             404,
-            "Product not found!!"
+            "Product not found!!!!"
         )
     }
 

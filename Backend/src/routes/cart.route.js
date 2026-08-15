@@ -1,4 +1,4 @@
-import { getCart, addCart, editCart, removeCart } from "../controllers/cart.controller";
+import { getCart, addCart, editCart, removeCart } from "../controllers/cart.controller.js";
 import { Router } from "express";
 import { jwtVerify } from "../middlewares/auth.midleware.js";
 
