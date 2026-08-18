@@ -10,7 +10,7 @@ selectFile.style.display = 'none'
 // feature product section 
 const featureProductSection = document.querySelector('#featureProductsSection')
 let featureProductHtml = ""
-products.forEach((item) => (
+products.slice(0, 4).forEach((item) => (
   featureProductHtml += productCard(
     item
   )))
@@ -24,11 +24,10 @@ const cardsContainer = document.querySelectorAll('.CardConatiner')
 const mainConatiner = document.querySelector('body')
 
 cardsContainer.forEach(card => {
-  console.log(products)
+  buttonClick()
   card.addEventListener('click', () => {
-    buttonClick()
     let product = products.find(item => item._id === Number(card.dataset.id))
-        // console.log(product)
+    // console.log(product)
     detailOpen(product, mainConatiner)
 
   })

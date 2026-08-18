@@ -123,16 +123,11 @@ function renderProduct(productsList) {
 
 renderProduct(products)
 
-
-
-
 const cardsContainer = document.querySelectorAll('.CardConatiner')
-
-
 const shopContainer = document.querySelector('body')
 cardsContainer.forEach((card) => {
+    buttonClick()
     card.addEventListener('click', () => {
-        buttonClick()
         let product = products.find(item => item._id === Number(card.dataset.id))
         detailOpen(product, shopContainer)
     })

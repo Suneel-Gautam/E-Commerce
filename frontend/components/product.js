@@ -28,17 +28,11 @@ export function productCard(product) {
 
 export function buttonClick() {
   const buyButton = document.querySelectorAll('.btn')
-  buyButton.forEach((btn)=>{
-    btn.addEventListener('click',(e)=>{
+  buyButton.forEach((btn) => {
+    btn.addEventListener('click', (e) => {
       e.stopPropagation()
-      console.log(btn)
     })
   })
-  // buyButton.addEventListener('click', (e) => {
-  //   e.stopPropagation()
-  //   console.log(buyButton)
-
-  // })
 }
 
 function renderTags(tags = []) {
