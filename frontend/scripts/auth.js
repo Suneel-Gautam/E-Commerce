@@ -9,11 +9,27 @@ const payload = {
     password: "",
     confirmPassword: ""
 }
+
 const registerButton = document.querySelector('#registerButton')
 
+const registerError = document.querySelector('#registerError')
 registerButton.addEventListener('click', () => {
-    console.log(payload)
+
+    Object.keys(payload).reverse().forEach((item, index) => {
+        if (!payload[item]) {
+            registerError.innerHTML = `${item} can't be empty`
+        }
+    })
+
+    if (payload.password !== payload.confirmPassword) {
+        registerError.innerHTML = "Password and confirmPassword doesnt match"
+    }
+    
+
+
+
 })
+
 
 registerInputFeild.forEach((box, index) => {
     const input = box.lastElementChild
@@ -26,16 +42,21 @@ registerInputFeild.forEach((box, index) => {
             } else {
                 registerButton.click()
             }
-            if (!payload.username) {
-                console.log("username Empty")
+        }
+
+    })
+    input.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace") {
+            if (!input.value && index !== 0) {
+                let prevInput = registerInputFeild[index - 1].lastElementChild
+                prevInput.focus()
             }
         }
     })
 
-
     input.addEventListener('input', () => {
         payload[input.classList[0]] = input.value
-
+        registerError.innerHTML = " "
     })
 })
 

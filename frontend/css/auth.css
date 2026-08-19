@@ -62,7 +62,7 @@ input:focus {
   scale: 1.06;
 }
 button {
-  margin-top: 40px;
+  margin-top: 20px;
   width: 100%;
   padding: 10px;
   border: 0px solid black;
@@ -146,9 +146,15 @@ button:hover {
   align-items: center;
   justify-content: space-between;
 }
-.registerinputBox input{
+.registerinputBox input {
   width: 60%;
 }
 .hideContainer {
   display: none;
+}
+
+.errorMessage {
+  margin-top: 20px;
+  text-align: center;
+  color: red;
 }
