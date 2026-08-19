@@ -14,19 +14,17 @@ const registerButton = document.querySelector('#registerButton')
 
 const registerError = document.querySelector('#registerError')
 registerButton.addEventListener('click', () => {
-
-    Object.keys(payload).reverse().forEach((item, index) => {
+    for (const item in payload) {
         if (!payload[item]) {
             registerError.innerHTML = `${item} can't be empty`
+            return
         }
-    })
-
+    }
     if (payload.password !== payload.confirmPassword) {
         registerError.innerHTML = "Password and confirmPassword doesnt match"
+        return
     }
-    
-
-
+    console.log(payload)
 
 })
 
@@ -55,7 +53,7 @@ registerInputFeild.forEach((box, index) => {
     })
 
     input.addEventListener('input', () => {
-        payload[input.classList[0]] = input.value
+        payload[input.name] = input.value
         registerError.innerHTML = " "
     })
 })
