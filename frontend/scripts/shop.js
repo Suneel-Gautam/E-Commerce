@@ -145,8 +145,6 @@ resetButton.addEventListener('click', () => {
     inputMax.value = "";
     inputMin.value = "";
     renderProduct(products)
-
-
 })
 
 

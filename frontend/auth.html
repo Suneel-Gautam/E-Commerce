@@ -11,10 +11,8 @@
 </head>
 
 <body>
-
     <div class="mainContainer">
-
-        <div class="loginContainer " id="login-container">
+        <div class="loginContainer hideContainer" id="login-container">
             <h1>
                 Login
             </h1>
@@ -50,31 +48,29 @@
                 Are you new? <span id="gotoregisterPage">Create an Account?</span>
             </div>
         </div>
-
-
         <div class="registerContainer hideContainer" id="register-container">
             <h1>
                 Register
             </h1>
             <div class="registerinputBox">
-                <label for="">Username</label>
-                <input type="text" placeholder="Enter Your username">
+                <label for="Username">Username</label>
+                <input type="text" placeholder="Enter Your username" class="username">
             </div>
             <div class="registerinputBox">
-                <label for="">Email</label>
-                <input type="text" placeholder="Enter Your email">
+                <label for="Email">Email</label>
+                <input type="text" placeholder="Enter Your email" class="email">
             </div>
             <div class="registerinputBox">
-                <label for="">Phonenumber</label>
-                <input type="text" placeholder="98*********">
+                <label for="Phonenumber">Phonenumber</label>
+                <input type="text" placeholder="98*********" class="phoneNumber">
             </div>
             <div class="registerinputBox">
-                <label for="">Password</label>
-                <input type="text" placeholder="*********">
+                <label for="Password">Password</label>
+                <input type="text" placeholder="*********" class="password">
             </div>
             <div class="registerinputBox">
-                <label for="">Confirm Password</label>
-                <input type="text" placeholder="*********">
+                <label for="ConfirmPassword">Confirm Password</label>
+                <input type="text" placeholder="*********" class="confirmPassword">
             </div>
 
             <button class="signup">
@@ -95,14 +91,11 @@
                 Already Have Account? <span id="gotologin">Login</span>
             </div>
         </div>
-
         <a class="backHome" href="/index.html">
             Back to Home
         </a>
-
     </div>
-
-    <script src="/scripts/auth.js"></script>
+    <script type="module" src="/scripts/auth.js"></script>
 
 </body>
 

@@ -6,6 +6,7 @@ import { detailOpen } from "../components/productModal.js";
 import { buttonClick } from "../components/product.js";
 
 
+
 selectFile.style.display = 'none'
 // feature product section 
 const featureProductSection = document.querySelector('#featureProductsSection')
