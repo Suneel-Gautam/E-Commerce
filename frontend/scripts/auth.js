@@ -9,12 +9,33 @@ const payload = {
     password: "",
     confirmPassword: ""
 }
+const registerButton = document.querySelector('#registerButton')
 
-registerInputFeild.forEach(box => {
+registerButton.addEventListener('click', () => {
+    console.log(payload)
+})
+
+registerInputFeild.forEach((box, index) => {
     const input = box.lastElementChild
+
+    input.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") {
+            if (registerInputFeild.length - 1 !== index) {
+                let nextInput = registerInputFeild[index + 1].lastElementChild
+                nextInput.focus()
+            } else {
+                registerButton.click()
+            }
+            if (!payload.username) {
+                console.log("username Empty")
+            }
+        }
+    })
+
+
     input.addEventListener('input', () => {
         payload[input.classList[0]] = input.value
-        console.log(payload)
+
     })
 })
 
