@@ -59,7 +59,6 @@ registerInputFeild.forEach((box, index) => {
 // login functions 
 
 let loginPayload = {
-    email: "",
     username: "",
     password: ""
 }
@@ -68,9 +67,22 @@ const loginInputField = document.querySelectorAll('.login-inputBox')
 const loginButton = document.querySelector('#loginButton')
 loginInputField.forEach((loginInput, index) => {
     const inputbox = loginInput.lastElementChild
-
     inputbox.addEventListener('input', () => {
+        let userInput = inputbox.value.trim()
 
+        if (inputbox.name === "password") {
+            loginPayload.password = userInput
+        } else {
+            const isEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(userInput)
+
+            if (isEmail) {
+                loginPayload.email = userInput
+                delete loginPayload.username
+            } else {
+                loginPayload.username = userInput
+                delete loginPayload.email
+            }
+        }
     })
 
     inputbox.addEventListener('keydown', (e) => {
@@ -91,8 +103,15 @@ loginInputField.forEach((loginInput, index) => {
     })
 })
 
+const loginError = document.querySelector('#loginError')
 loginButton.addEventListener('click', () => {
-    console.log('Button clicked!!')
+    for (const key in loginPayload) {
+        if (!loginPayload[key]) {
+            loginError.innerHTML = `${key} can't be empty`
+            return
+        }
+    }
+
 })
 
 

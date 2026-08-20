@@ -28,77 +28,77 @@
             <div class="forgetPassword">
                 Forgot password?
             </div>
+            <div class="errorMessage" id="loginError"></div>
+                <button id="loginButton">
+                    Sign In
+                </button>
 
-            <button id="loginButton">
-                Sign In
-            </button>
 
+                <div class="sepration">
+                    <div class="line"></div> or
+                    <div class="line"></div>
+                </div>
 
-            <div class="sepration">
-                <div class="line"></div> or
-                <div class="line"></div>
+                <div class="google">
+                    <i class="fa-brands fa-google"></i>
+                    Sign in with Google
+                </div>
+
+                <div class="anotherPagelink">
+                    Are you new? <span id="gotoregisterPage">Create an Account?</span>
+                </div>
             </div>
+            <div class="registerContainer hideContainer" id="register-container">
+                <h1>
+                    Register
+                </h1>
+                <div class="registerinputBox">
+                    <label for="Username">Username</label>
+                    <input type="text" placeholder="Enter Your username" name="username">
+                </div>
+                <div class="registerinputBox">
+                    <label for="Email">Email</label>
+                    <input type="text" placeholder="Enter Your email" name="email">
+                </div>
+                <div class="registerinputBox">
+                    <label for="Phonenumber">Phonenumber</label>
+                    <input type="text" placeholder="98*********" name="phoneNumber">
+                </div>
+                <div class="registerinputBox">
+                    <label for="Password">Password</label>
+                    <input type="password" placeholder="*********" name="password">
+                </div>
+                <div class="registerinputBox">
+                    <label for="ConfirmPassword">Confirm Password</label>
+                    <input type="password" placeholder="*********" name="confirmPassword">
+                </div>
 
-            <div class="google">
-                <i class="fa-brands fa-google"></i>
-                Sign in with Google
-            </div>
+                <div class="errorMessage" id="registerError">
+                </div>
 
-            <div class="anotherPagelink">
-                Are you new? <span id="gotoregisterPage">Create an Account?</span>
+                <button class="signup" id="registerButton">
+                    Sign Up
+                </button>
+
+                <div class="sepration">
+                    <div class="line"></div> or
+                    <div class="line"></div>
+                </div>
+
+                <div class="google">
+                    <i class="fa-brands fa-google"></i>
+                    Sign in with Google
+                </div>
+
+                <div class="anotherPagelink">
+                    Already Have Account? <span id="gotologin">Login</span>
+                </div>
             </div>
+            <a class="backHome" href="/index.html">
+                Back to Home
+            </a>
         </div>
-        <div class="registerContainer hideContainer" id="register-container">
-            <h1>
-                Register
-            </h1>
-            <div class="registerinputBox">
-                <label for="Username">Username</label>
-                <input type="text" placeholder="Enter Your username" name="username">
-            </div>
-            <div class="registerinputBox">
-                <label for="Email">Email</label>
-                <input type="text" placeholder="Enter Your email" name="email">
-            </div>
-            <div class="registerinputBox">
-                <label for="Phonenumber">Phonenumber</label>
-                <input type="text" placeholder="98*********" name="phoneNumber">
-            </div>
-            <div class="registerinputBox">
-                <label for="Password">Password</label>
-                <input type="password" placeholder="*********" name="password">
-            </div>
-            <div class="registerinputBox">
-                <label for="ConfirmPassword">Confirm Password</label>
-                <input type="password" placeholder="*********" name="confirmPassword">
-            </div>
-
-            <div class="errorMessage" id="registerError">
-            </div>
-
-            <button class="signup" id="registerButton">
-                Sign Up
-            </button>
-
-            <div class="sepration">
-                <div class="line"></div> or
-                <div class="line"></div>
-            </div>
-
-            <div class="google">
-                <i class="fa-brands fa-google"></i>
-                Sign in with Google
-            </div>
-
-            <div class="anotherPagelink">
-                Already Have Account? <span id="gotologin">Login</span>
-            </div>
-        </div>
-        <a class="backHome" href="/index.html">
-            Back to Home
-        </a>
-    </div>
-    <script type="module" src="/scripts/auth.js"></script>
+        <script type="module" src="/scripts/auth.js"></script>
 
 </body>
 
