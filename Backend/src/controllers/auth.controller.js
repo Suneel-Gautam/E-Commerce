@@ -6,7 +6,6 @@ import { Apiresponse } from '../utils/apiResponse.js'
 import { jwtVerify } from "../middlewares/auth.midleware.js";
 import jwt from 'jsonwebtoken'
 
-
 const generateAccessTokenRefreshToken = async function (userId) {
 
     const user = await User.findById(userId)
@@ -34,19 +33,7 @@ const register = asyncHandler(async (req, res) => {
     }
     const profilePicPath = req.file?.path
 
-    console.log(req.file)
-
-    let response;
-    if (profilePicPath) {
-        response = await fileUpload(profilePicPath)
-    }
-
-    if (!response) {
-        throw new ApiError(
-            403,
-            "Failed to upload image on server"
-        )
-    }
+    let response = await fileUpload(profilePicPath)
 
     const user = await User.create({
         username,

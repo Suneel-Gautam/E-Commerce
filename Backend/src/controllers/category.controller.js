@@ -33,7 +33,6 @@ const createCategory = asyncHandler(async (req, res) => {
     )
 
 })
-
 const editCategory = asyncHandler(async (req, res) => {
     const id = req.params.id
 
@@ -64,7 +63,6 @@ const editCategory = asyncHandler(async (req, res) => {
     )
 
 })
-
 const deleteCategory = asyncHandler(async (req, res) => {
     const id = req.params.id
 
@@ -88,7 +86,6 @@ const deleteCategory = asyncHandler(async (req, res) => {
         )
     )
 })
-
 const getCategory = asyncHandler(async (req, res) => {
 
     const category = await Category.find()
