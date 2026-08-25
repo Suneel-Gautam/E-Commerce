@@ -13,7 +13,9 @@ const payload = {
 const registerButton = document.querySelector('#registerButton')
 
 const registerError = document.querySelector('#registerError')
-registerButton.addEventListener('click', () => {
+
+// register button click
+registerButton.addEventListener('click', async () => {
     for (const item in payload) {
         if (!payload[item]) {
             registerError.innerHTML = `${item} can't be empty`
@@ -24,7 +26,37 @@ registerButton.addEventListener('click', () => {
         registerError.innerHTML = "Password and confirmPassword doesnt match"
         return
     }
-    console.log(payload)
+
+    const formData = new FormData()
+
+    formData.append("username", payload.username)
+    formData.append("email", payload.email)
+    formData.append("phone", payload.phoneNumber)
+    formData.append("password", payload.password)
+
+    try {
+        const response = await fetch(`${url}/auth/register`, {
+            method: "POST",
+            body: formData
+        })
+
+        const text = await response.text()
+
+        console.log("Server response:", text)
+
+        if (!response.ok) {
+            registerError.innerHTML = "Registration failed"
+            return
+        }
+
+        // Only if your backend returns JSON
+        const data = JSON.parse(text)
+
+
+    } catch (error) {
+        console.error("Register error:", error)
+        registerError.innerHTML = "Something went wrong"
+    }
 
 })
 
@@ -55,8 +87,8 @@ registerInputFeild.forEach((box, index) => {
     })
 })
 
-
 // login functions 
+const loginError = document.querySelector('#loginError')
 
 let loginPayload = {
     username: "",
@@ -69,7 +101,6 @@ loginInputField.forEach((loginInput, index) => {
     const inputbox = loginInput.lastElementChild
     inputbox.addEventListener('input', () => {
         let userInput = inputbox.value.trim()
-
         if (inputbox.name === "password") {
             loginPayload.password = userInput
         } else {
@@ -83,6 +114,7 @@ loginInputField.forEach((loginInput, index) => {
                 delete loginPayload.email
             }
         }
+        loginError.innerHTML = ""
     })
 
     inputbox.addEventListener('keydown', (e) => {
@@ -103,7 +135,7 @@ loginInputField.forEach((loginInput, index) => {
     })
 })
 
-const loginError = document.querySelector('#loginError')
+// login button click 
 loginButton.addEventListener('click', () => {
     for (const key in loginPayload) {
         if (!loginPayload[key]) {
