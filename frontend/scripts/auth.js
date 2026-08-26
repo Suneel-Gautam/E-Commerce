@@ -11,7 +11,6 @@ const payload = {
     confirmPassword: ""
 }
 const registerButton = document.querySelector('#registerButton')
-
 const registerError = document.querySelector('#registerError')
 
 // register button click
@@ -27,35 +26,35 @@ registerButton.addEventListener('click', async () => {
         return
     }
 
-    const formData = new FormData()
-
-    formData.append("username", payload.username)
-    formData.append("email", payload.email)
-    formData.append("phone", payload.phoneNumber)
-    formData.append("password", payload.password)
+    registerButton.disable = "true"
+    registerButton.innerHTML = "Registering..."
 
     try {
+
+        const formData = new FormData()
+
+        formData.append("username", payload.username)
+        formData.append("email", payload.email)
+        formData.append("phone", payload.phoneNumber)
+        formData.append("password", payload.password)
         const response = await fetch(`${url}/auth/register`, {
             method: "POST",
             body: formData
         })
-
-        const text = await response.text()
-
-        console.log("Server response:", text)
+        const data = await response.json()
 
         if (!response.ok) {
             registerError.innerHTML = "Registration failed"
             return
         }
 
-        // Only if your backend returns JSON
-        const data = JSON.parse(text)
-
 
     } catch (error) {
         console.error("Register error:", error)
         registerError.innerHTML = "Something went wrong"
+    } finally {
+        registerButton.disabled = false
+        registerButton.innerHTML = "Sign Up"
     }
 
 })

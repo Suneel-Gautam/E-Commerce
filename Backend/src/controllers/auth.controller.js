@@ -35,6 +35,17 @@ const register = asyncHandler(async (req, res) => {
 
     let response = await fileUpload(profilePicPath)
 
+    const userExist = await User.findOne({
+        email,
+        username
+    })
+    if (userExist) {
+        throw new ApiError(
+            403,
+            "User Already Exist!! please login"
+        )
+    }
+
     const user = await User.create({
         username,
         email,
