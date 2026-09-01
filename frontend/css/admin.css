@@ -54,10 +54,10 @@ h1 {
 }
 
 .rightSide {
-  margin-left: 350px;
+  margin-left: 380px;
 }
 .rightSide .infoSection {
-  padding: 30px 50px;
+  margin: 20px 10px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
@@ -80,11 +80,75 @@ h1 {
 .rightSide .infoSection .dashboardbox div {
   font-size: 22px;
 }
+#closebutton {
+  display: none;
+}
+.btn {
+  padding: 10px 20px;
+  background-color: aqua;
+  border: 0px solid black;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.215, 0.61, 0.355, 1);
+}
+.btn:hover {
+  background-color: rgb(11, 187, 187);
+}
+
+.modal {
+  background-color: rgba(16, 15, 15, 0.5);
+  position: absolute;
+  inset: 0;
+  display: none;
+  justify-content: center;
+  align-items: center;
+}
+.modalContent {
+  position: relative;
+  height: 600px;
+  width: 600px;
+  background-color: aliceblue;
+  border-radius: 20px;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+th,
+td {
+  border: 1px solid black;
+  padding: 10px;
+  text-align: center;
+}
+th {
+  background-color: lightgray;
+}
+
+#modalCloseButton {
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  transition: all 200ms cubic-bezier(0.165, 0.84, 0.44, 1);
+  width: 30px;
+  height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgb(17, 16, 16);
+  border-radius: 100%;
+  color: white;
+}
+#modalCloseButton:hover {
+  transform: rotate(-120deg);
+}
 
 @media screen and (max-width: 1000px) {
   .leftSide {
     display: none;
-    
   }
   .slider {
     display: flex;
@@ -103,6 +167,24 @@ h1 {
   .leftSideMobile {
   }
   .rightSide {
-    margin-left: 10px;
+    margin-left: 40px;
+    margin-top: 20px;
+  }
+  #closebutton {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    font-size: 20px;
+    transition: all 200ms cubic-bezier(0.455, 0.03, 0.515, 0.955);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  #closebutton:hover {
+    background-color: rgb(232, 233, 235);
+    border-radius: 100%;
+    transform: rotate(-45deg);
   }
 }
