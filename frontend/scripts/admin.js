@@ -36,3 +36,4 @@ closeProductModal.addEventListener('click', () => {
     AddProductModal.style.display = "none"
 })
 
+// <span class="errormessage">username is required*</span> 

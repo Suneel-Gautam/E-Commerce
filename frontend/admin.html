@@ -12,9 +12,9 @@
 <body>
 
     <div class="adminmainContainer">
+        <!-- /// left side bar  -->
         <div class="leftSide" id="leftSide">
             <h1>Admin Panel</h1>
-
             <div class="sideItems">
                 <div class="item ">
                     <i class="fa-solid fa-house"></i>
@@ -44,8 +44,11 @@
 
 
 
+        <!-- /// right side main section  -->
         <div class="rightSide">
-            <section class="dashboardContainer">
+
+            <!-- // dshboard informations  -->
+            <section class="dashboardContainer ">
                 <div class="infoSection">
                     <div class="dashboardbox">
                         <span>10</span>
@@ -56,15 +59,13 @@
                         <div>User</div>
                     </div>
                 </div>
-
             </section>
 
             <!-- product listing section   -->
-            <section class="productModal">
+            <section class="productModal hideContainer">
                 <button class="btn" id="addProductButton">Add Product</button>
 
             </section>
-
             <!-- product open modal  -->
             <div class="modal" id="AddProductModal">
                 <div class="modalContent">
@@ -140,8 +141,8 @@
                     </div>
                 </div>
             </div>
-            <!-- /// user data -->
-            <section class="userContainer">
+            <!-- /// user data section-->
+            <section class="userContainer hideContainer">
                 <button class="btn" id="addUserButton">Add User</button>
                 <table>
                     <tr>
