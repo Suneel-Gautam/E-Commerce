@@ -106,8 +106,8 @@ h1 {
 }
 .modalContent {
   position: relative;
-  height: 600px;
-  width: 600px;
+  min-height: 600px;
+  width: 500px;
   background-color: aliceblue;
   border-radius: 20px;
 }
@@ -125,8 +125,21 @@ td {
 th {
   background-color: lightgray;
 }
+.addButton {
+  padding: 10px;
+  background-color: brown;
+  color: white;
+  font-size: 18px;
+  border: none;
+  border-radius: 4px;
+  transition: all 300ms cubic-bezier(0.19, 1, 0.22, 1);
+  cursor: pointer;
+}
+.addButton:hover{
+  background-color: rgb(128, 28, 28);
+}
 
-#modalCloseButton {
+.closeButton {
   font-size: 20px;
   position: absolute;
   top: 10px;
@@ -142,8 +155,60 @@ th {
   border-radius: 100%;
   color: white;
 }
-#modalCloseButton:hover {
+.closeButton:hover {
   transform: rotate(-120deg);
+}
+
+.productModal {
+  margin: 20px;
+}
+
+.modalContent {
+  padding: 20px 30px;
+}
+.modalContent h1 {
+  font-size: 30px;
+  font-weight: 700;
+  color: brown;
+
+}
+.insideSection {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+}
+.productInputbox {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.productInputbox label {
+  font-size: 18px;
+  font-weight: 500;
+}
+.productInputbox input {
+  padding: 8px;
+  outline: none;
+  border: 1px solid rgb(21, 2, 2);
+  border-radius: 2px;
+}
+.productInputbox select {
+  padding: 6px;
+}
+.productInputbox .radiosection {
+  margin-top: 10px;
+  display: flex;
+  gap: 30px;
+}
+.productInputbox .radioItem {
+  display: flex;
+  gap: 10px;
+}
+.productInputbox textarea {
+  height: 100px;
+  padding: 10px;
+  outline: none;
 }
 
 @media screen and (max-width: 1000px) {

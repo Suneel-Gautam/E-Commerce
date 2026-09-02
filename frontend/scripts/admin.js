@@ -11,6 +11,7 @@ closebutton.addEventListener('click', () => {
     sliderButton.style.display = 'flex'
 })
 
+///user listing modal
 const addUserConatiner = document.querySelector('#addUserModal')
 const addUserButton = document.querySelector('#addUserButton')
 const modalCloseButton = document.querySelector('#modalCloseButton')
@@ -20,6 +21,18 @@ addUserButton.addEventListener('click', () => {
 })
 modalCloseButton.addEventListener('click', () => {
     addUserConatiner.style.display = "none"
+})
 
+/// product listing modal 
+const addProductButton = document.querySelector('#addProductButton')
+const AddProductModal = document.querySelector("#AddProductModal")
+const closeProductModal = document.querySelector('#closeProductModal')
+
+addProductButton.addEventListener('click', () => {
+    AddProductModal.style.display = 'flex'
+})
+
+closeProductModal.addEventListener('click', () => {
+    AddProductModal.style.display = "none"
 })
 
