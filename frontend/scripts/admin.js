@@ -37,3 +37,16 @@ closeProductModal.addEventListener('click', () => {
 })
 
 // <span class="errormessage">username is required*</span> 
+
+
+
+const navItem = document.querySelectorAll('.item')
+
+navItem.forEach((item) => {
+    item.addEventListener('click', () => {
+        const page = item.dataset.page
+        console.dir(item)
+
+    })
+
+})
