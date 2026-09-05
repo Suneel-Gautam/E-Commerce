@@ -42,11 +42,26 @@ closeProductModal.addEventListener('click', () => {
 
 const navItem = document.querySelectorAll('.item')
 
+
 navItem.forEach((item) => {
     item.addEventListener('click', () => {
         const page = item.dataset.page
-        console.dir(item)
+
+        if (page === "dashboard") {
+            console.log("dashboard selected")
+        } else if (page === "product") {
+            console.log("product selected")
+        } else if (page === "user") {
+            console.log("user selected")
+        } else if (page === "order") {
+            console.log("order selected")
+        }
+
 
     })
 
 })
+
+function changePage(page) {
+
+}
