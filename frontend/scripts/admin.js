@@ -16,12 +16,18 @@ const addUserConatiner = document.querySelector('#addUserModal')
 const addUserButton = document.querySelector('#addUserButton')
 const modalCloseButton = document.querySelector('#modalCloseButton')
 
-addUserButton.addEventListener('click', () => {
-    addUserConatiner.style.display = "flex"
-})
-modalCloseButton.addEventListener('click', () => {
-    addUserConatiner.style.display = "none"
-})
+if (addUserButton) {
+    addUserButton.addEventListener('click', () => {
+        addUserConatiner.style.display = "flex"
+    })
+}
+if (modalCloseButton) {
+    modalCloseButton.addEventListener('click', () => {
+        addUserConatiner.style.display = "none"
+    })
+}
+
+
 
 /// product listing modal 
 const addProductButton = document.querySelector('#addProductButton')
@@ -69,22 +75,37 @@ const productContainer = `
             <section class="productContainer " id="productContainer">
                 <button class="btn" id="addProductButton">Add Product</button>
             </section>
+            `
 
-`
+const userContainer = `
+            <section class="userContainer">
+                <button class="btn" id="addUserButton">Add User</button>
+                <table>
+                    <tr>
+
+                    </tr>
+
+                    <tr>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </section>
+            `
+mainConatiner.innerHTML = dashboardSection
 
 navItem.forEach((item) => {
     item.addEventListener('click', () => {
         const page = item.dataset.page
 
         if (page === "dashboard") {
-            console.log("dashboard selected")
             mainConatiner.innerHTML = dashboardSection
         } else if (page === "product") {
-            console.log("product selected")
+            mainConatiner.innerHTML = productContainer
         } else if (page === "user") {
-            console.log("user selected")
+            mainConatiner.innerHTML = userContainer
         } else if (page === "order") {
-            console.log("order selected")
+            mainConatiner.innerHTML = dashboardSection
         }
 
 
@@ -92,6 +113,4 @@ navItem.forEach((item) => {
 
 })
 
-function changePage(page) {
 
-}
