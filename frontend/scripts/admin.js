@@ -28,20 +28,49 @@ const addProductButton = document.querySelector('#addProductButton')
 const AddProductModal = document.querySelector("#AddProductModal")
 const closeProductModal = document.querySelector('#closeProductModal')
 
-addProductButton.addEventListener('click', () => {
-    AddProductModal.style.display = 'flex'
-})
+if (addProductButton) {
+    addProductButton.addEventListener('click', () => {
+        AddProductModal.style.display = 'flex'
+    })
 
-closeProductModal.addEventListener('click', () => {
-    AddProductModal.style.display = "none"
-})
+}
+
+if (closeProductModal) {
+    closeProductModal.addEventListener('click', () => {
+        AddProductModal.style.display = "none"
+    })
+}
+
 
 // <span class="errormessage">username is required*</span> 
 
 
 
 const navItem = document.querySelectorAll('.item')
+const mainConatiner = document.querySelector('#mainConatiner')
 
+const dashboardSection = `
+            <section class="dashboardContainer" id="dashboardContainer">
+                <div class="infoSection">
+                    <div class="dashboardbox">
+                        <span>10</span>
+                        <div>User</div>
+                    </div>
+                    <div class="dashboardbox">
+                        <span>10</span>
+                        <div>User</div>
+                    </div>
+                </div>
+            </section>
+`
+
+const productContainer = `
+            <!-- product listing section   -->
+            <section class="productContainer " id="productContainer">
+                <button class="btn" id="addProductButton">Add Product</button>
+            </section>
+
+`
 
 navItem.forEach((item) => {
     item.addEventListener('click', () => {
@@ -49,6 +78,7 @@ navItem.forEach((item) => {
 
         if (page === "dashboard") {
             console.log("dashboard selected")
+            mainConatiner.innerHTML = dashboardSection
         } else if (page === "product") {
             console.log("product selected")
         } else if (page === "user") {

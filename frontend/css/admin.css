@@ -154,7 +154,7 @@ th {
 .closeButton:hover {
   transform: rotate(-120deg);
 }
-.productModal {
+.productContainer {
   margin: 20px;
 }
 .modalContent {
