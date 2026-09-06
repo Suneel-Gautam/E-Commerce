@@ -58,6 +58,8 @@ const userContainer = `
             `
 mainConatiner.innerHTML = dashboardSection
 
+// navbar
+
 navItem.forEach((item) => {
     item.addEventListener('click', () => {
         const page = item.dataset.page
@@ -72,7 +74,6 @@ navItem.forEach((item) => {
                 AddProductModal.style.display = 'flex'
             })
 
-
         } else if (page === "user") {
             mainConatiner.innerHTML = userContainer
 
@@ -85,18 +86,13 @@ navItem.forEach((item) => {
             mainConatiner.innerHTML = dashboardSection
         }
 
-
     })
 
 })
 
-
-
-
-
+// modal close 
 const modalCloseButton = document.querySelector('#modalCloseButton')
 const closeProductModal = document.querySelector('#closeProductModal')
-
 
 if (modalCloseButton) {
     modalCloseButton.addEventListener('click', () => {
@@ -109,3 +105,101 @@ if (closeProductModal) {
         AddProductModal.style.display = "none"
     })
 }
+
+
+// product form javascript goes here 
+
+
+
+
+const inputBox = document.querySelectorAll('.productInput')
+
+inputBox.forEach((item, index) => {
+    item.addEventListener('input', () => {
+
+    })
+    item.addEventListener('keydown', (e) => {
+        if (e.key === "Enter") {
+            if (index !== inputBox.length - 1) {
+                let nextInput = inputBox[index + 1]
+                nextInput.focus()
+
+            }
+        }
+    })
+    item.addEventListener('keydown', (e) => {
+        if (e.key === "Backspace") {
+            if (index !== 0 && item.value == "") {
+                let nextInput = inputBox[index - 1]
+                nextInput.focus()
+            }
+        }
+    })
+
+})
+
+// select options for catagory 
+
+const catagoryOptions = [
+    {
+        id: "shoes",
+        name: "Shoes"
+    },
+    {
+        id: "others",
+        name: "others"
+    }
+
+]
+
+const selectCatagory = document.querySelector('#Catagory')
+
+catagoryOptions.forEach((item) => {
+    selectCatagory.innerHTML += ` 
+       <option value="${item.id}">${item.name}</option>
+    `
+})
+
+selectCatagory.addEventListener('change', () => {
+    const selectedValue = selectCatagory.value
+    console.log(selectedValue)
+})
+
+const radioItem = document.querySelectorAll(".radioItem")
+
+
+radioItem.forEach(item => {
+    const element = item.children[0]
+    element.addEventListener('click', () => {
+        if (element.checked) {
+
+            console.log(element.id)
+
+        }
+
+    })
+})
+
+// product description 
+
+const productDescription = document.querySelector('#productDescription')
+
+
+productDescription.addEventListener('input', () => {
+    console.log(productDescription.value.trim())
+})
+
+// image 
+
+const image = document.querySelector('#image')
+const imgdiv = document.querySelector('.img')
+
+image.addEventListener('change', () => {
+    const file = image.files[0]
+
+    const img = document.createElement('img')
+    img.setAttribute('src', URL.createObjectURL(file))
+    img.classList.add('productEnteredImage')
+    imgdiv.appendChild(img)
+
+})

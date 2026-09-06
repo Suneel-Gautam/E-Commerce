@@ -61,61 +61,63 @@
                 <div class="insideSection">
                     <div class="productInputbox">
                         <label for="name">Name</label>
-                        <input type="text" id="name" placeholder="Enter Your Product Name">
+                        <input type="text" id="name" class="productInput" placeholder="Enter Your Product Name">
                     </div>
                     <div class="productInputbox">
                         <label for="price">Price</label>
-                        <input type="number" id="name" placeholder="Enter Your Product Price">
+                        <input type="number" id="price" class="productInput" placeholder="Enter Your Product Price">
                     </div>
                     <div class="productInputbox">
                         <label for="stock">Stock</label>
-                        <input type="number" id="name" placeholder="Enter Your Product Stock">
+                        <input type="number" id="stock" class="productInput" placeholder="Enter Your Product Stock">
                     </div>
                     <div class="productInputbox">
                         <label for="Catagory">Catagory</label>
-                        <select name="" id="">
+                        <select name="Catagory" id="Catagory">
                             <option value="" disabled selected>Choose Catagory</option>
-                            <option value="">Shoes</option>
                         </select>
                     </div>
                     <div class="productInputbox">
                         <label for="size">Size</label>
                         <div class="radiosection">
                             <div class="radioItem">
-                                <input type="radio">
-                                <label for="">S</label>
+                                <input type="checkbox" name="size" id="S">
+                                <label for="S">S</label>
                             </div>
                             <div class="radioItem">
-                                <input type="radio">
-                                <label for="">M</label>
+                                <input type="checkbox" name="size" id="M">
+                                <label for="M">M</label>
                             </div>
                             <div class="radioItem">
-                                <input type="radio">
-                                <label for="">L</label>
+                                <input type="checkbox" id="L">
+                                <label for="L">L</label>
                             </div>
                             <div class="radioItem">
-                                <input type="radio">
-                                <label for="">xL</label>
+                                <input type="checkbox" name="size" id="XL">
+                                <label for="XL">XL</label>
                             </div>
                             <div class="radioItem">
-                                <input type="radio">
-                                <label for="">XXL</label>
+                                <input type="checkbox" name="size" id="XXL">
+                                <label for="XXL">XXL</label>
                             </div>
                             <div class="radioItem">
-                                <input type="radio">
-                                <label for="">XXXL</label>
+                                <input type="checkbox" name="size" id="XXL">
+                                <label for="XXL">XXXL</label>
                             </div>
                         </div>
 
                     </div>
                     <div class="productInputbox">
                         <label for="stock">Description</label>
-                        <textarea name="" id="">
+                        <textarea name="" id="productDescription">
                             </textarea>
                     </div>
                     <div class="productInputbox">
                         <label for="stock">Image</label>
-                        <input type="file">
+                        <input type="file" id="image">
+                    </div>
+                    <div class="img">
+
                     </div>
 
                     <button class="addButton">
@@ -124,7 +126,7 @@
                 </div>
             </div>
         </div>
- 
+
         <!-- // Add User Modal -->
         <div class="modal" id="addUserModal">
             <div class="modalContent">
