@@ -56,35 +56,47 @@ const userContainer = `
                 </table>
             </section>
             `
-mainConatiner.innerHTML = dashboardSection
+let page = localStorage.getItem("setActive") || "dashboard"
+
+const pagechange = () => {
+    if (page === "dashboard") {
+        mainConatiner.innerHTML = dashboardSection
+        localStorage.setItem("setActive", "dashboard")
+    } else if (page === "product") {
+        mainConatiner.innerHTML = productContainer
+        localStorage.setItem("setActive", "product")
+
+        const addProductButton = document.querySelector('#addProductButton')
+        addProductButton.addEventListener('click', () => {
+            AddProductModal.style.display = 'flex'
+        })
+
+    } else if (page === "user") {
+        mainConatiner.innerHTML = userContainer
+        localStorage.setItem("setActive", "user")
+
+        const addUserButton = document.querySelector('#addUserButton')
+        addUserButton.addEventListener('click', () => {
+            addUserConatiner.style.display = "flex"
+        })
+
+    } else if (page === "order") {
+        mainConatiner.innerHTML = dashboardSection
+        localStorage.setItem("setActive", "order")
+
+    }
+}
+pagechange()
+
 
 // navbar
 
 navItem.forEach((item) => {
     item.addEventListener('click', () => {
-        const page = item.dataset.page
+        page = item.dataset.page
 
-        if (page === "dashboard") {
-            mainConatiner.innerHTML = dashboardSection
-        } else if (page === "product") {
-            mainConatiner.innerHTML = productContainer
+        pagechange()
 
-            const addProductButton = document.querySelector('#addProductButton')
-            addProductButton.addEventListener('click', () => {
-                AddProductModal.style.display = 'flex'
-            })
-
-        } else if (page === "user") {
-            mainConatiner.innerHTML = userContainer
-
-            const addUserButton = document.querySelector('#addUserButton')
-            addUserButton.addEventListener('click', () => {
-                addUserConatiner.style.display = "flex"
-            })
-
-        } else if (page === "order") {
-            mainConatiner.innerHTML = dashboardSection
-        }
 
     })
 
@@ -202,4 +214,13 @@ image.addEventListener('change', () => {
     img.classList.add('productEnteredImage')
     imgdiv.appendChild(img)
 
+})
+
+
+const addProductButton = document.querySelector('#addProductButton')
+
+
+addProductButton.addEventListener('click', () => {
+
+    console.log("Button Clicked!!!")
 })
