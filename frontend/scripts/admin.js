@@ -10,46 +10,10 @@ closebutton.addEventListener('click', () => {
     leftSide.style.display = 'none'
     sliderButton.style.display = 'flex'
 })
-
-///user listing modal
 const addUserConatiner = document.querySelector('#addUserModal')
-const addUserButton = document.querySelector('#addUserButton')
-const modalCloseButton = document.querySelector('#modalCloseButton')
-
-if (addUserButton) {
-    addUserButton.addEventListener('click', () => {
-        addUserConatiner.style.display = "flex"
-    })
-}
-if (modalCloseButton) {
-    modalCloseButton.addEventListener('click', () => {
-        addUserConatiner.style.display = "none"
-    })
-}
-
-
-
-/// product listing modal 
-const addProductButton = document.querySelector('#addProductButton')
 const AddProductModal = document.querySelector("#AddProductModal")
-const closeProductModal = document.querySelector('#closeProductModal')
-
-if (addProductButton) {
-    addProductButton.addEventListener('click', () => {
-        AddProductModal.style.display = 'flex'
-    })
-
-}
-
-if (closeProductModal) {
-    closeProductModal.addEventListener('click', () => {
-        AddProductModal.style.display = "none"
-    })
-}
-
 
 // <span class="errormessage">username is required*</span> 
-
 
 
 const navItem = document.querySelectorAll('.item')
@@ -102,8 +66,21 @@ navItem.forEach((item) => {
             mainConatiner.innerHTML = dashboardSection
         } else if (page === "product") {
             mainConatiner.innerHTML = productContainer
+
+            const addProductButton = document.querySelector('#addProductButton')
+            addProductButton.addEventListener('click', () => {
+                AddProductModal.style.display = 'flex'
+            })
+
+
         } else if (page === "user") {
             mainConatiner.innerHTML = userContainer
+
+            const addUserButton = document.querySelector('#addUserButton')
+            addUserButton.addEventListener('click', () => {
+                addUserConatiner.style.display = "flex"
+            })
+
         } else if (page === "order") {
             mainConatiner.innerHTML = dashboardSection
         }
@@ -114,3 +91,21 @@ navItem.forEach((item) => {
 })
 
 
+
+
+
+const modalCloseButton = document.querySelector('#modalCloseButton')
+const closeProductModal = document.querySelector('#closeProductModal')
+
+
+if (modalCloseButton) {
+    modalCloseButton.addEventListener('click', () => {
+        addUserConatiner.style.display = "none"
+    })
+}
+
+if (closeProductModal) {
+    closeProductModal.addEventListener('click', () => {
+        AddProductModal.style.display = "none"
+    })
+}
