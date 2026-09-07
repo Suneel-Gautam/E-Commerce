@@ -87,7 +87,6 @@ const pagechange = () => {
 }
 pagechange()
 
-
 // navbar
 
 navItem.forEach((item) => {
@@ -96,6 +95,7 @@ navItem.forEach((item) => {
         pagechange()
     })
 })
+
 
 // modal close 
 const modalCloseButton = document.querySelector('#modalCloseButton')
@@ -112,7 +112,9 @@ if (closeProductModal) {
         AddProductModal.style.display = "none"
     })
 }
-
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
+// product modal section
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// 
 
 const errorMessage = document.querySelector('#errorMessage')
 
@@ -186,7 +188,6 @@ selectCatagory.addEventListener('change', () => {
 
 const radioItem = document.querySelectorAll(".radioItem")
 
-
 radioItem.forEach(item => {
     const element = item.children[0]
     element.addEventListener('click', () => {
@@ -205,8 +206,7 @@ const productDescription = document.querySelector('#productDescription')
 
 
 productDescription.addEventListener('input', () => {
-
-    console.log(productDescription.value)
+    productPlayload.description = productDescription.value
 })
 
 // image 
@@ -229,15 +229,86 @@ submitProductButton.addEventListener('click', () => {
     //validation for product form
     if (!productPlayload.productName.trim()) {
         errorMessage.innerHTML = "ProductName can't be empty"
+        return
     } else if (!productPlayload.price) {
         errorMessage.innerHTML = "Price Can't be empty"
+        return
     } else if (!productPlayload.stock) {
         errorMessage.innerHTML = "Stock Can't be empty"
+        return
     } else if (!productPlayload.catagory) {
         errorMessage.innerHTML = "category Can't be empty"
+        return
     } else if (productPlayload.size.length === 0) {
         errorMessage.innerHTML = "Select aleast one size"
+        return
     }
 
 
+})
+
+
+
+
+
+
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
+// user modal section
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// 
+
+
+const userInputBox = document.querySelectorAll('.userInputbox')
+const submitUserButton = document.querySelector("#submitUserButton")
+
+
+let userPlayload = {
+    username: "",
+    email: "",
+    phoneNumber: "",
+    password: ""
+}
+
+
+userInputBox.forEach((item, index) => {
+    const element = item.children[1]
+
+    element.addEventListener('input', () => {
+        userPlayload[element.id] = element.value
+        errorMessage.innerHTML = ""
+
+    })
+    element.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+            if (index !== userInputBox.length - 1) {
+                let nextElement = userInputBox[index + 1].children[1]
+                nextElement.focus()
+            } else {
+                submitUserButton.click()
+            }
+        }
+        if (e.key === "Backspace") {
+            if (index !== 0 && element.value === "") {
+                let prevElement = userInputBox[index - 1].children[1]
+                prevElement.focus()
+            }
+        }
+    })
+})
+const userErrorMessage = document.querySelector('#userErrorMessage')
+
+submitUserButton.addEventListener('click', () => {
+
+    if (!userPlayload.username.trim()) {
+        userErrorMessage.innerHTML = "Username is Required"
+        return
+    } else if (!userPlayload.email.trim()) {
+        userErrorMessage.innerHTML = "Email is Required"
+        return
+    } else if (!userPlayload.phoneNumber.trim()) {
+        userErrorMessage.innerHTML = "PhoneNumber is Required"
+        return
+    } else if (!userPlayload.password.trim()) {
+        userErrorMessage.innerHTML = "Password is Required"
+        return
+    }
 })
