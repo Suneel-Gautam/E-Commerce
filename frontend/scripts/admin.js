@@ -12,6 +12,7 @@ closebutton.addEventListener('click', () => {
 })
 const addUserConatiner = document.querySelector('#addUserModal')
 const AddProductModal = document.querySelector("#AddProductModal")
+const addCategoryModal = document.querySelector('#addCategoryModal')
 
 
 
@@ -33,6 +34,12 @@ const dashboardSection = `
             </section>
 `
 
+const categoryContainer = `
+            <!-- product listing section   -->
+            <section class="categoryContainer" id="categoryContainer">
+                <button class="btn" id="AddCategory">Add Category</button>
+            </section>
+            `
 const productContainer = `
             <!-- product listing section   -->
             <section class="productContainer " id="productContainer">
@@ -61,6 +68,14 @@ const pagechange = () => {
     if (page === "dashboard") {
         mainConatiner.innerHTML = dashboardSection
         localStorage.setItem("setActive", "dashboard")
+    } else if (page === "category") {
+        mainConatiner.innerHTML = categoryContainer
+        localStorage.setItem("setActive", "category")
+        const AddCategory = document.querySelector('#AddCategory')
+        AddCategory.addEventListener('click', () => {
+            addCategoryModal.style.display = "flex"
+        })
+
     } else if (page === "product") {
         mainConatiner.innerHTML = productContainer
         localStorage.setItem("setActive", "product")
@@ -100,6 +115,7 @@ navItem.forEach((item) => {
 // modal close 
 const modalCloseButton = document.querySelector('#modalCloseButton')
 const closeProductModal = document.querySelector('#closeProductModal')
+const closeCategoryModal = document.querySelector('#closeCategoryModal')
 
 if (modalCloseButton) {
     modalCloseButton.addEventListener('click', () => {
@@ -112,6 +128,36 @@ if (closeProductModal) {
         AddProductModal.style.display = "none"
     })
 }
+if (closeCategoryModal) {
+    closeCategoryModal.addEventListener('click', () => {
+        addCategoryModal.style.display = "none"
+    })
+}
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
+// category modal section
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// 
+
+const categoryName = document.querySelector('#categoryName')
+const submitCategory = document.querySelector('#submitCategory')
+const categoryError = document.querySelector('#categoryError')
+
+
+let givenCategory;
+categoryName.addEventListener('input', () => {
+    givenCategory = categoryName.value
+    categoryError.innerHTML = ""
+})
+submitCategory.addEventListener("click", () => {
+    if (!givenCategory) {
+        categoryError.innerHTML = "Category can't be empty"
+        return
+    }
+
+
+})
+
+
+
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
 // product modal section
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// 
@@ -243,7 +289,6 @@ submitProductButton.addEventListener('click', () => {
         errorMessage.innerHTML = "Select aleast one size"
         return
     }
-
 
 })
 

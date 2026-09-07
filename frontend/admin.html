@@ -19,6 +19,10 @@
                     <i class="fa-solid fa-house"></i>
                     <div>Dashboard</div>
                 </div>
+                <div class="item" data-page="category">
+                    <i class="fa-solid fa-layer-group"></i>
+                    <div>Category</div>
+                </div>
                 <div class="item" data-page="product">
                     <i class="fa-solid fa-socks"></i>
                     <div>Product</div>
@@ -43,6 +47,34 @@
 
         <!-- /// right side main section  -->
         <div class="rightSide" id="mainConatiner"></div>
+
+
+        <!-- category modal   -->
+
+        <div class="modal" id="addCategoryModal">
+            <div class="modalContent">
+
+                <div class="closeButton" id="closeCategoryModal">
+                    <i class="fa-solid fa-xmark"></i>
+                </div>
+
+                <h1>Add Category</h1>
+
+                <div class="insideSection">
+
+                    <div class="formGroup">
+                        <label for="categoryName">Category Name</label>
+                        <input type="text" id="categoryName" name="categoryName" placeholder="Enter category name">
+                    </div>
+                    <span class="errormessage" id="categoryError"></span>
+
+                    <button type="submit" id="submitCategory">
+                        Add Category
+                    </button>
+
+                </div>
+            </div>
+        </div>
 
         <!-- product open modal  -->
         <div class="modal" id="AddProductModal">
