@@ -25,4 +25,18 @@ app.use('/api/v1/cart', cartRoute)
 app.use('/api/v1/order', orderRoute)
 
 
+
+app.use((err, req, res, next) => {
+
+    console.log("ERROR:", err)
+
+    res.status(err.statusCode || 500).json({
+        success: false,
+        message: err.message || "Something went wrong",
+        errors: err.error || [],
+        data: null
+    })
+})
+
+
 export { app }

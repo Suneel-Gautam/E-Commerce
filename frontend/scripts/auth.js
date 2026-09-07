@@ -26,7 +26,7 @@ registerButton.addEventListener('click', async () => {
         return
     }
 
-    registerButton.disable = "true"
+    registerButton.disable = true
     registerButton.innerHTML = "Registering..."
 
     try {
@@ -44,7 +44,7 @@ registerButton.addEventListener('click', async () => {
         const data = await response.json()
 
         if (!response.ok) {
-            registerError.innerHTML = "Registration failed"
+            registerError.innerHTML = data.message
             return
         }
 
