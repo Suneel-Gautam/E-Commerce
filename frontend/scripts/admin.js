@@ -13,7 +13,6 @@ closebutton.addEventListener('click', () => {
 const addUserConatiner = document.querySelector('#addUserModal')
 const AddProductModal = document.querySelector("#AddProductModal")
 
-// <span class="errormessage">username is required*</span> 
 
 
 const navItem = document.querySelectorAll('.item')
@@ -94,12 +93,8 @@ pagechange()
 navItem.forEach((item) => {
     item.addEventListener('click', () => {
         page = item.dataset.page
-
         pagechange()
-
-
     })
-
 })
 
 // modal close 
@@ -119,15 +114,25 @@ if (closeProductModal) {
 }
 
 
+const errorMessage = document.querySelector('#errorMessage')
+
+let productPlayload = {
+    productName: "",
+    price: "",
+    stock: "",
+    catagory: "",
+    size: [],
+    description: "",
+    image: ""
+}
+
 // product form javascript goes here 
-
-
-
-
 const inputBox = document.querySelectorAll('.productInput')
 
 inputBox.forEach((item, index) => {
     item.addEventListener('input', () => {
+        productPlayload[item.id] = item.value
+        errorMessage.innerHTML = ""
 
     })
     item.addEventListener('keydown', (e) => {
@@ -174,7 +179,9 @@ catagoryOptions.forEach((item) => {
 
 selectCatagory.addEventListener('change', () => {
     const selectedValue = selectCatagory.value
-    console.log(selectedValue)
+    productPlayload.catagory = selectedValue
+    errorMessage.innerHTML = ""
+
 })
 
 const radioItem = document.querySelectorAll(".radioItem")
@@ -183,12 +190,12 @@ const radioItem = document.querySelectorAll(".radioItem")
 radioItem.forEach(item => {
     const element = item.children[0]
     element.addEventListener('click', () => {
+        errorMessage.innerHTML = ""
         if (element.checked) {
-
-            console.log(element.id)
-
+            productPlayload.size.push(element.id)
+        } else {
+            productPlayload.size = productPlayload.size.filter(size => size !== element.id)
         }
-
     })
 })
 
@@ -198,7 +205,8 @@ const productDescription = document.querySelector('#productDescription')
 
 
 productDescription.addEventListener('input', () => {
-    console.log(productDescription.value.trim())
+
+    console.log(productDescription.value)
 })
 
 // image 
@@ -208,7 +216,6 @@ const imgdiv = document.querySelector('.img')
 
 image.addEventListener('change', () => {
     const file = image.files[0]
-
     const img = document.createElement('img')
     img.setAttribute('src', URL.createObjectURL(file))
     img.classList.add('productEnteredImage')
@@ -216,11 +223,21 @@ image.addEventListener('change', () => {
 
 })
 
+const submitProductButton = document.querySelector('#submitProductButton')
 
-const addProductButton = document.querySelector('#addProductButton')
+submitProductButton.addEventListener('click', () => {
+    //validation for product form
+    if (!productPlayload.productName.trim()) {
+        errorMessage.innerHTML = "ProductName can't be empty"
+    } else if (!productPlayload.price) {
+        errorMessage.innerHTML = "Price Can't be empty"
+    } else if (!productPlayload.stock) {
+        errorMessage.innerHTML = "Stock Can't be empty"
+    } else if (!productPlayload.catagory) {
+        errorMessage.innerHTML = "category Can't be empty"
+    } else if (productPlayload.size.length === 0) {
+        errorMessage.innerHTML = "Select aleast one size"
+    }
 
 
-addProductButton.addEventListener('click', () => {
-
-    console.log("Button Clicked!!!")
 })

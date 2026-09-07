@@ -1,16 +1,15 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>AdminPannel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" />
-    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin.css" />
 </head>
 
 <body>
-
     <div class="adminmainContainer">
         <!-- /// left side bar  -->
         <div class="leftSide" id="leftSide">
@@ -42,12 +41,8 @@
             <i class="fa-solid fa-bars"></i>
         </div>
 
-
-
         <!-- /// right side main section  -->
-        <div class="rightSide" id="mainConatiner">
-
-        </div>
+        <div class="rightSide" id="mainConatiner"></div>
 
         <!-- product open modal  -->
         <div class="modal" id="AddProductModal">
@@ -55,72 +50,68 @@
                 <div class="closeButton" id="closeProductModal">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <h1>
-                    Add Product
-                </h1>
+                <h1>Add Product</h1>
                 <div class="insideSection">
                     <div class="productInputbox">
                         <label for="name">Name</label>
-                        <input type="text" id="name" class="productInput" placeholder="Enter Your Product Name">
+                        <input type="text" id="productName" class="productInput"
+                            placeholder="Enter Your Product Name" />
                     </div>
                     <div class="productInputbox">
                         <label for="price">Price</label>
-                        <input type="number" id="price" class="productInput" placeholder="Enter Your Product Price">
+                        <input type="number" id="price" class="productInput" placeholder="Enter Your Product Price" />
                     </div>
                     <div class="productInputbox">
                         <label for="stock">Stock</label>
-                        <input type="number" id="stock" class="productInput" placeholder="Enter Your Product Stock">
+                        <input type="number" id="stock" class="productInput" placeholder="Enter Your Product Stock" />
                     </div>
                     <div class="productInputbox">
-                        <label for="Catagory">Catagory</label>
+                        <label for="Catagory">Category</label>
                         <select name="Catagory" id="Catagory">
-                            <option value="" disabled selected>Choose Catagory</option>
+                            <option value="" disabled selected>Choose Category</option>
                         </select>
                     </div>
                     <div class="productInputbox">
                         <label for="size">Size</label>
                         <div class="radiosection">
                             <div class="radioItem">
-                                <input type="checkbox" name="size" id="S">
+                                <input type="checkbox" name="size" id="S" />
                                 <label for="S">S</label>
                             </div>
                             <div class="radioItem">
-                                <input type="checkbox" name="size" id="M">
+                                <input type="checkbox" name="size" id="M" />
                                 <label for="M">M</label>
                             </div>
                             <div class="radioItem">
-                                <input type="checkbox" id="L">
+                                <input type="checkbox" id="L" />
                                 <label for="L">L</label>
                             </div>
                             <div class="radioItem">
-                                <input type="checkbox" name="size" id="XL">
+                                <input type="checkbox" name="size" id="XL" />
                                 <label for="XL">XL</label>
                             </div>
                             <div class="radioItem">
-                                <input type="checkbox" name="size" id="XXL">
+                                <input type="checkbox" name="size" id="XXL" />
                                 <label for="XXL">XXL</label>
                             </div>
                             <div class="radioItem">
-                                <input type="checkbox" name="size" id="XXL">
+                                <input type="checkbox" name="size" id="XXL" />
                                 <label for="XXL">XXXL</label>
                             </div>
                         </div>
-
                     </div>
                     <div class="productInputbox">
                         <label for="stock">Description</label>
-                        <textarea name="" id="productDescription">
-                            </textarea>
+                        <textarea name="description" id="productDescription"></textarea>
                     </div>
                     <div class="productInputbox">
                         <label for="stock">Image</label>
-                        <input type="file" id="image">
-                    </div>
-                    <div class="img">
-
+                        <input type="file" id="image" />
                     </div>
 
-                    <button class="addButton" id="addProductButton">
+                    <span class="errormessage" id="errorMessage"></span>
+
+                    <button class="addButton" id="submitProductButton">
                         Add Product
                     </button>
                 </div>
@@ -133,38 +124,32 @@
                 <div class="closeButton" id="modalCloseButton">
                     <i class="fa-solid fa-xmark"></i>
                 </div>
-                <h1>
-                    Add User
-                </h1>
+                <h1>Add User</h1>
                 <div class="insideSection">
                     <div class="userInputbox">
                         <label for="name">Username</label>
-                        <input type="text" id="name" placeholder="Enter Username">
+                        <input type="text" id="name" placeholder="Enter Username" />
                     </div>
                     <div class="userInputbox">
                         <label for="name">Email</label>
-                        <input type="text" id="name" placeholder="Enter Email">
+                        <input type="text" id="name" placeholder="Enter Email" />
                     </div>
                     <div class="userInputbox">
                         <label for="name">Phonenumber</label>
-                        <input type="text" id="name" placeholder="Enter Phonenumber">
+                        <input type="text" id="name" placeholder="Enter Phonenumber" />
                     </div>
                     <div class="userInputbox">
                         <label for="name">Password</label>
-                        <input type="text" id="name" placeholder="Enter Phonenumber">
+                        <input type="text" id="name" placeholder="Enter Phonenumber" />
                     </div>
 
-                    <button class="addButton">
-                        Add User
-                    </button>
+                    <button class="addButton">Add User</button>
                 </div>
             </div>
         </div>
-
     </div>
 
     <script src="scripts/admin.js"></script>
-
 </body>
 
 </html>
