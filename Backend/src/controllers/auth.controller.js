@@ -66,7 +66,7 @@ const register = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        // secure: true
     }
     return res.status(201)
         .cookie("accessToken", accessToken, options)
@@ -113,7 +113,7 @@ const login = asyncHandler(async (req, res) => {
     const loginUser = await User.findById(user._id).select('-password -refreshToken')
     const options = {
         httpOnly: true,
-        secure: true
+        // secure: true
     }
     return res.status(201)
         .cookie("accessToken", accessToken, options)
@@ -300,7 +300,7 @@ const createAccessAndRefreshToken = asyncHandler(async (req, res) => {
 
     const options = {
         httpOnly: true,
-        secure: true
+        // secure: true
     }
     return res.status(200)
         .cookie('accessToken', accessToken, options)

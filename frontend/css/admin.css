@@ -297,6 +297,8 @@ th {
   transform: scale(0.98);
 }
 
+
+
 @media screen and (max-width: 1000px) {
   .leftSide {
     display: none;

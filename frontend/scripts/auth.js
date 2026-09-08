@@ -12,6 +12,7 @@ const payload = {
 }
 const registerButton = document.querySelector('#registerButton')
 const registerError = document.querySelector('#registerError')
+const sucesssMessage = document.querySelector('#sucesssMessage')
 
 // register button click
 registerButton.addEventListener('click', async () => {
@@ -46,6 +47,11 @@ registerButton.addEventListener('click', async () => {
         if (!response.ok) {
             registerError.innerHTML = data.message
             return
+        }
+
+        if (response.ok) {
+            sucesssMessage.innerHTML = "Registration Sucessfull!!"
+            console.log(data)
         }
 
 
@@ -134,14 +140,45 @@ loginInputField.forEach((loginInput, index) => {
     })
 })
 
+const loginSucess = document.querySelector('#loginSucess')
+
 // login button click 
-loginButton.addEventListener('click', () => {
+loginButton.addEventListener('click', async () => {
     for (const key in loginPayload) {
         if (!loginPayload[key]) {
             loginError.innerHTML = `${key} can't be empty`
             return
         }
     }
+    loginButton.disable = true
+    loginButton.innerHTML = "Signing In..."
+
+    try {
+        const response = await fetch(`${url}/auth/login`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify(loginPayload)
+        })
+        const data = await response.json()
+
+        if (!response.ok) {
+            loginError.innerHTML = data.message
+            return
+        }
+        if (response.ok) {
+            loginSucess.innerHTML = data.message
+            console.log(data)
+        }
+    } catch (error) {
+
+    } finally {
+        loginButton.disable = false
+        loginButton.innerHTML = "Sign In"
+    }
+
+
 
 })
 

@@ -152,6 +152,10 @@ button:hover {
 .hideContainer {
   display: none;
 }
+.sucessMessage {
+  color: green;
+  text-align: center;
+}
 
 .errorMessage {
   margin-top: 20px;
