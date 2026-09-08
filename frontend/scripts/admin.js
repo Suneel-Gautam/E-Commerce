@@ -150,12 +150,43 @@ categoryName.addEventListener('input', () => {
     givenCategory = categoryName.value
     categoryError.innerHTML = ""
 })
-submitCategory.addEventListener("click", async() => {
+submitCategory.addEventListener("click", async () => {
     if (!givenCategory) {
         categoryError.innerHTML = "Category can't be empty"
         return
     }
-    const response = await fetch(`${url}`)
+    submitCategory.disabled = true
+    submitCategory.innerHTML = "Adding.."
+
+    try {
+        const response = await fetch(`${url}/category`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                name: givenCategory
+            })
+        })
+        const data = await response.json()
+
+        if (!response.ok) {
+            categoryError.innerHTML = data.message
+            console.log(data)
+            return
+        }
+        if (response.ok) {
+            categoryError.innerHTML = data.message
+            categoryError.style.color = "Green"
+
+        }
+    } catch (error) {
+
+    } finally {
+        submitCategory.disabled = false
+        submitCategory.innerHTML = "Add Category"
+    }
+
 
 
 })
