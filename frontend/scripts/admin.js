@@ -1,3 +1,6 @@
+import { url } from "../api/fetchApi.js"
+
+
 const sliderButton = document.querySelector('#sliderButton')
 const leftSide = document.querySelector('#leftSide')
 const closebutton = document.querySelector("#closebutton")
@@ -147,11 +150,12 @@ categoryName.addEventListener('input', () => {
     givenCategory = categoryName.value
     categoryError.innerHTML = ""
 })
-submitCategory.addEventListener("click", () => {
+submitCategory.addEventListener("click", async() => {
     if (!givenCategory) {
         categoryError.innerHTML = "Category can't be empty"
         return
     }
+    const response = await fetch(`${url}`)
 
 
 })

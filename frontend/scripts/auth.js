@@ -27,7 +27,7 @@ registerButton.addEventListener('click', async () => {
         return
     }
 
-    registerButton.disable = true
+    registerButton.disabled = true
     registerButton.innerHTML = "Registering..."
 
     try {
@@ -150,7 +150,7 @@ loginButton.addEventListener('click', async () => {
             return
         }
     }
-    loginButton.disable = true
+    loginButton.disabled = true
     loginButton.innerHTML = "Signing In..."
 
     try {
@@ -174,7 +174,7 @@ loginButton.addEventListener('click', async () => {
     } catch (error) {
 
     } finally {
-        loginButton.disable = false
+        loginButton.disabled = false
         loginButton.innerHTML = "Sign In"
     }
 
