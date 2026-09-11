@@ -17,8 +17,6 @@ const addUserConatiner = document.querySelector('#addUserModal')
 const AddProductModal = document.querySelector("#AddProductModal")
 const addCategoryModal = document.querySelector('#addCategoryModal')
 
-
-
 const navItem = document.querySelectorAll('.item')
 const mainConatiner = document.querySelector('#mainConatiner')
 
@@ -39,9 +37,34 @@ const dashboardSection = `
 
 const categoryContainer = `
             <!-- product listing section   -->
-            <section class="categoryContainer" id="categoryContainer">
-                <button class="btn" id="AddCategory">Add Category</button>
-            </section>
+<section class="categoryContainer" id="categoryContainer">
+
+    <div class="categoryHeader">
+        <div>
+            <h2>Categories</h2>
+            <p>Manage your product categories</p>
+        </div>
+
+        <button class="btn" id="AddCategory">+ Add Category</button>
+    </div>
+
+    <div class="categoryTableWrapper">
+        <table class="categoryTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Category Name</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="categoryTable">
+
+            </tbody>
+        </table>
+    </div>
+
+</section>
             `
 const productContainer = `
             <!-- product listing section   -->
@@ -91,16 +114,13 @@ const pagechange = () => {
     } else if (page === "user") {
         mainConatiner.innerHTML = userContainer
         localStorage.setItem("setActive", "user")
-
         const addUserButton = document.querySelector('#addUserButton')
         addUserButton.addEventListener('click', () => {
             addUserConatiner.style.display = "flex"
         })
-
     } else if (page === "order") {
         mainConatiner.innerHTML = dashboardSection
         localStorage.setItem("setActive", "order")
-
     }
 }
 pagechange()
@@ -150,6 +170,12 @@ categoryName.addEventListener('input', () => {
     givenCategory = categoryName.value
     categoryError.innerHTML = ""
 })
+categoryName.addEventListener('keydown', (e) => {
+    if (e.key === "Enter") {
+        submitCategory.click()
+    }
+
+})
 submitCategory.addEventListener("click", async () => {
     if (!givenCategory) {
         categoryError.innerHTML = "Category can't be empty"
@@ -181,15 +207,48 @@ submitCategory.addEventListener("click", async () => {
 
         }
     } catch (error) {
-
+        categoryError.innerHTML = error.message
+        categoryError.style.color = "Green"
+        console.log(error)
     } finally {
         submitCategory.disabled = false
         submitCategory.innerHTML = "Add Category"
     }
 
-
-
 })
+
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
+// category fetch section
+//// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// 
+
+const getCategory = async () => {
+    try {
+        const response = await fetch(`${url}/category`)
+        const data = await response.json()
+        console.log(data.data)
+        renderCategory(data.data)
+    } catch (error) {
+    }
+}
+getCategory()
+
+const renderCategory = (data) => {
+    const categoryTable = document.querySelector('#categoryTable')
+    data.forEach((item, index) => {
+        let html = `
+                <tr>
+                    <td>${index + 1}</td>
+                    <td class="categoryName">${item.name}</td>
+                    <td class="actions">
+                        <button class="editBtn">Edit</button>
+                        <button class="deleteBtn">Delete</button>
+                    </td>
+                </tr>
+        `
+        categoryTable.innerHTML += html
+    })
+
+}
 
 
 
