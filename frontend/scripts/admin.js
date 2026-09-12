@@ -17,6 +17,7 @@ const addUserConatiner = document.querySelector('#addUserModal')
 const AddProductModal = document.querySelector("#AddProductModal")
 const addCategoryModal = document.querySelector('#addCategoryModal')
 
+
 const navItem = document.querySelectorAll('.item')
 const mainConatiner = document.querySelector('#mainConatiner')
 
@@ -88,40 +89,6 @@ const userContainer = `
             `
 let page = localStorage.getItem("setActive") || "dashboard"
 
-const pagechange = () => {
-    if (page === "dashboard") {
-        mainConatiner.innerHTML = dashboardSection
-        localStorage.setItem("setActive", "dashboard")
-    } else if (page === "category") {
-        mainConatiner.innerHTML = categoryContainer
-        localStorage.setItem("setActive", "category")
-        const AddCategory = document.querySelector('#AddCategory')
-        AddCategory.addEventListener('click', () => {
-            addCategoryModal.style.display = "flex"
-        })
-
-    } else if (page === "product") {
-        mainConatiner.innerHTML = productContainer
-        localStorage.setItem("setActive", "product")
-
-        const addProductButton = document.querySelector('#addProductButton')
-        addProductButton.addEventListener('click', () => {
-            AddProductModal.style.display = 'flex'
-        })
-
-    } else if (page === "user") {
-        mainConatiner.innerHTML = userContainer
-        localStorage.setItem("setActive", "user")
-        const addUserButton = document.querySelector('#addUserButton')
-        addUserButton.addEventListener('click', () => {
-            addUserConatiner.style.display = "flex"
-        })
-    } else if (page === "order") {
-        mainConatiner.innerHTML = dashboardSection
-        localStorage.setItem("setActive", "order")
-    }
-}
-pagechange()
 
 // navbar
 
@@ -228,19 +195,8 @@ submitCategory.addEventListener("click", async () => {
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
 // category fetch section
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// 
-
-
-const getCategory = async () => {
-    try {
-        const response = await fetch(`${url}/category`)
-        const data = await response.json()
-        renderCategory(data.data)
-    } catch (error) {
-    }
-}
-getCategory()
-const categoryTable = document.querySelector('#categoryTable')
 const renderCategory = (data) => {
+    const categoryTable = document.querySelector('#categoryTable')
     let html = " "
     data.forEach((item, index) => {
         html += `
@@ -248,7 +204,6 @@ const renderCategory = (data) => {
                     <td>${index + 1}</td>
                     <td class="categoryName">${item.name}</td>
                     <td class="actions">
-                        <button class="editBtn">Edit</button>
                         <button id=${item._id} name=${item.name} class="deleteBtn">Delete</button>
                     </td>
                 </tr>
@@ -285,6 +240,19 @@ const renderCategory = (data) => {
         })
     })
 }
+
+let catagoryOptions;
+const getCategory = async () => {
+    try {
+        const response = await fetch(`${url}/category`)
+        const data = await response.json()
+        catagoryOptions = data.data
+    } catch (error) {
+    }
+}
+await getCategory()
+
+
 
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
 // product modal section
@@ -333,23 +301,12 @@ inputBox.forEach((item, index) => {
 
 // select options for catagory 
 
-const catagoryOptions = [
-    {
-        id: "shoes",
-        name: "Shoes"
-    },
-    {
-        id: "others",
-        name: "others"
-    }
-
-]
 
 const selectCatagory = document.querySelector('#Catagory')
-
+console.log(catagoryOptions)
 catagoryOptions.forEach((item) => {
     selectCatagory.innerHTML += ` 
-       <option value="${item.id}">${item.name}</option>
+       <option value="${item._id}">${item.name}</option>
     `
 })
 
@@ -383,23 +340,15 @@ productDescription.addEventListener('input', () => {
     productPlayload.description = productDescription.value
 })
 
-// image 
-
-const image = document.querySelector('#image')
-const imgdiv = document.querySelector('.img')
-
 image.addEventListener('change', () => {
     const file = image.files[0]
-    const img = document.createElement('img')
-    img.setAttribute('src', URL.createObjectURL(file))
-    img.classList.add('productEnteredImage')
-    imgdiv.appendChild(img)
+    productPlayload.image = file
 
 })
 
 const submitProductButton = document.querySelector('#submitProductButton')
 
-submitProductButton.addEventListener('click', () => {
+submitProductButton.addEventListener('click', async () => {
     //validation for product form
     if (!productPlayload.productName.trim()) {
         errorMessage.innerHTML = "ProductName can't be empty"
@@ -416,6 +365,25 @@ submitProductButton.addEventListener('click', () => {
     } else if (productPlayload.size.length === 0) {
         errorMessage.innerHTML = "Select aleast one size"
         return
+    }
+
+    const form = new FormData()
+    form.append('name', productPlayload.name)
+    form.append('price', productPlayload.price)
+    form.append('category', productPlayload.catagory)
+    form.append('size', productPlayload.size)
+    form.append('description', productPlayload.description)
+    form.append('category', productPlayload.catagory)
+    form.append('productImage', productPlayload.image)
+
+
+
+    //// post method for product 
+    try {
+        const response = await fetch(`${url}`)
+        const data = await response.json()
+    } catch (error) {
+
     }
 
 })
@@ -481,3 +449,41 @@ submitUserButton.addEventListener('click', () => {
         return
     }
 })
+
+
+
+const pagechange = () => {
+    if (page === "dashboard") {
+        mainConatiner.innerHTML = dashboardSection
+        localStorage.setItem("setActive", "dashboard")
+    } else if (page === "category") {
+        mainConatiner.innerHTML = categoryContainer
+        localStorage.setItem("setActive", "category")
+        const AddCategory = document.querySelector('#AddCategory')
+        AddCategory.addEventListener('click', () => {
+            addCategoryModal.style.display = "flex"
+        })
+        renderCategory(catagoryOptions)
+
+    } else if (page === "product") {
+        mainConatiner.innerHTML = productContainer
+        localStorage.setItem("setActive", "product")
+
+        const addProductButton = document.querySelector('#addProductButton')
+        addProductButton.addEventListener('click', () => {
+            AddProductModal.style.display = 'flex'
+        })
+
+    } else if (page === "user") {
+        mainConatiner.innerHTML = userContainer
+        localStorage.setItem("setActive", "user")
+        const addUserButton = document.querySelector('#addUserButton')
+        addUserButton.addEventListener('click', () => {
+            addUserConatiner.style.display = "flex"
+        })
+    } else if (page === "order") {
+        mainConatiner.innerHTML = dashboardSection
+        localStorage.setItem("setActive", "order")
+    }
+}
+pagechange()
