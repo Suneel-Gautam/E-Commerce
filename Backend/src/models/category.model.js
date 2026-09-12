@@ -9,8 +9,8 @@ const categorySchema = new mongoose.Schema({
     color: {
         type: String,
     }
-},{
-    timestamps : true
+}, {
+    timestamps: true
 })
 
 const Category = mongoose.model('Category', categorySchema)

@@ -20,6 +20,11 @@ const addCategoryModal = document.querySelector('#addCategoryModal')
 const navItem = document.querySelectorAll('.item')
 const mainConatiner = document.querySelector('#mainConatiner')
 
+const loading = `
+   <p id="loading">Loading...</p>
+
+`
+
 const dashboardSection = `
             <section class="dashboardContainer" id="dashboardContainer">
                 <div class="infoSection">
@@ -47,7 +52,7 @@ const categoryContainer = `
 
         <button class="btn" id="AddCategory">+ Add Category</button>
     </div>
-
+    <span id="editCategoryMessage"></span>
     <div class="categoryTableWrapper">
         <table class="categoryTable">
             <thead>
@@ -77,14 +82,7 @@ const userContainer = `
             <section class="userContainer">
                 <button class="btn" id="addUserButton">Add User</button>
                 <table>
-                    <tr>
-
-                    </tr>
-
-                    <tr>
-                        <td></td>
-                        <td></td>
-                    </tr>
+                 
                 </table>
             </section>
             `
@@ -205,6 +203,16 @@ submitCategory.addEventListener("click", async () => {
             categoryError.innerHTML = data.message
             categoryError.style.color = "Green"
 
+            setTimeout(() => {
+                if (closeCategoryModal) {
+                    addCategoryModal.style.display = "none"
+                }
+                categoryError.innerHTML = " "
+                categoryName.value = ""
+
+                getCategory()
+            }, 2000);
+
         }
     } catch (error) {
         categoryError.innerHTML = error.message
@@ -221,36 +229,62 @@ submitCategory.addEventListener("click", async () => {
 // category fetch section
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// 
 
+
 const getCategory = async () => {
     try {
         const response = await fetch(`${url}/category`)
         const data = await response.json()
-        console.log(data.data)
         renderCategory(data.data)
     } catch (error) {
     }
 }
 getCategory()
-
+const categoryTable = document.querySelector('#categoryTable')
 const renderCategory = (data) => {
-    const categoryTable = document.querySelector('#categoryTable')
+    let html = " "
     data.forEach((item, index) => {
-        let html = `
+        html += `
                 <tr>
                     <td>${index + 1}</td>
                     <td class="categoryName">${item.name}</td>
                     <td class="actions">
                         <button class="editBtn">Edit</button>
-                        <button class="deleteBtn">Delete</button>
+                        <button id=${item._id} name=${item.name} class="deleteBtn">Delete</button>
                     </td>
                 </tr>
         `
-        categoryTable.innerHTML += html
+        categoryTable.innerHTML = html
     })
 
+    const allbuttons = document.querySelectorAll('.deleteBtn')
+    allbuttons.forEach(item => {
+        item.addEventListener('click', async () => {
+            const editCategoryMessage = document.querySelector('#editCategoryMessage')
+            try {
+                const response = await fetch(`${url}/category/${item.id}`, {
+                    method: "DELETE"
+                })
+                const data = await response.json()
+                console.log(data)
+                getCategory()
+                if (!response.ok) {
+                    editCategoryMessage.innerHTML = data.message
+                    editCategoryMessage.style.color = "Red"
+                }
+                if (response.ok) {
+                    editCategoryMessage.innerHTML = data.message
+                    editCategoryMessage.style.color = "Red"
+
+                }
+                setTimeout(() => {
+                    editCategoryMessage.innerHTML = " "
+                }, 2000);
+            } catch (error) {
+                console.log(error)
+            }
+        })
+    })
 }
-
-
 
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
 // product modal section
@@ -385,10 +419,6 @@ submitProductButton.addEventListener('click', () => {
     }
 
 })
-
-
-
-
 
 
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
