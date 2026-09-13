@@ -266,7 +266,7 @@
   display: none;
 }
 .navbarContainer .profileDropdown .content {
-  width: 220px;
+  width: 320px;
   padding: 12px;
   display: flex;
   flex-direction: column;

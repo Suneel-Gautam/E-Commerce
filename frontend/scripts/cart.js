@@ -16,7 +16,17 @@ let cardItem = [
         quantity: 1,
     },
 ]
+import { isAuthenticated, checkLogin } from "./navbar.js"
 
+
+async function init() {
+    await checkLogin()
+
+    if (!isAuthenticated) {
+        window.location.href = "/index.html"
+    }
+}
+init()
 const cardItems = document.querySelector('.cardItems')
 
 function renderCart(cartProduct) {

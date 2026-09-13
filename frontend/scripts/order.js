@@ -119,6 +119,19 @@ const myOrders = [
     },
 ];
 
+
+import { isAuthenticated, checkLogin } from "./navbar.js"
+
+
+async function init() {
+    await checkLogin()
+
+    if (isAuthenticated) {
+        window.location.href = "/index.html"
+    }
+}
+init()
+
 const orderContainer = document.querySelector('.contentSection')
 
 let orderItem = ""

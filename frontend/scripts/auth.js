@@ -1,5 +1,15 @@
 import { url } from "../api/fetchApi.js"
+import { isAuthenticated, checkLogin } from "./navbar.js"
 
+
+async function init() {
+    await checkLogin()
+
+    if (isAuthenticated) {
+        window.location.href = "/index.html"
+    }
+}
+init()
 const registerInputFeild = document.querySelectorAll('.registerinputBox')
 
 /// register functions here 
@@ -51,7 +61,9 @@ registerButton.addEventListener('click', async () => {
 
         if (response.ok) {
             sucesssMessage.innerHTML = "Registration Sucessfull!!"
-            console.log(data)
+            setTimeout(() => {
+                window.location.href = "/index.html"
+            }, 2000);
         }
 
 
@@ -170,7 +182,9 @@ loginButton.addEventListener('click', async () => {
         }
         if (response.ok) {
             loginSucess.innerHTML = data.message
-            console.log(data)
+            setTimeout(() => {
+                window.location.href = "/index.html"
+            }, 2000);
         }
     } catch (error) {
 
