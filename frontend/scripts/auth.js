@@ -159,6 +159,7 @@ loginButton.addEventListener('click', async () => {
             headers: {
                 "Content-Type": "application/json"
             },
+            credentials: "include",
             body: JSON.stringify(loginPayload)
         })
         const data = await response.json()
@@ -177,8 +178,6 @@ loginButton.addEventListener('click', async () => {
         loginButton.disabled = false
         loginButton.innerHTML = "Sign In"
     }
-
-
 
 })
 

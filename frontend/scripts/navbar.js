@@ -1,4 +1,25 @@
-const isAuthenticated = false
+import { url } from "../api/fetchApi.js"
+
+export let isAuthenticated;
+
+async function checkLogin() {
+  try {
+    const response = await fetch(`${url}/auth/getme`, {
+      credentials: "include"
+    })
+    const data = await response.json()
+
+    if (!response.ok) {
+      isAuthenticated = false
+    }
+    if (response.ok) {
+      isAuthenticated = true
+    }
+  } catch (error) {
+    console.log(error)
+  }
+}
+
 
 function renderNavbar() {
 
@@ -65,7 +86,12 @@ function renderNavbar() {
 
 }
 
-renderNavbar()
+
+async function init() {
+  await checkLogin()
+  renderNavbar()
+
+}
 
 
 
@@ -113,9 +139,11 @@ if (logo) {
 
 const getStarted = document.querySelector('#getStarted')
 
-if(getStarted){
-  getStarted.addEventListener('click',()=>{
+if (getStarted) {
+  getStarted.addEventListener('click', () => {
     window.location.href = '/auth.html'
   })
 }
 
+
+init()
