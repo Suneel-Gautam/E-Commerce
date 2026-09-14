@@ -77,6 +77,8 @@ const productContainer = `
             <section class="productContainer " id="productContainer">
                 <button class="btn" id="addProductButton">Add Product</button>
             </section>
+    <span id="editproductMessage"></span>
+
        <div class="productTableWrapper">
         <table class="productTable">
             <thead>
@@ -460,24 +462,64 @@ submitProductButton.addEventListener('click', async () => {
 
 const renderProduct = (data) => {
     const productTable = document.querySelector('#productTable')
-    if (!productTable) {
+    if (!productTable) return
+
+    // Clear table if data is empty
+    if (!data || data.length === 0) {
+        productTable.innerHTML = `<tr><td colspan="5">No products found</td></tr>`
         return
     }
-    let html = ""
 
+    let html = ""
     data.forEach((item, index) => {
         html += `
-         <tr>
-                    <td>${index + 1}</td>
-                    <td class="productName">${item.name}</td>
-                    <td class="productPrice">${item.price}</td>
-                    <td class="productStock">${item.stock}</td>
-                    <td class="actions">
-                        <button id=${item._id} name=${item.name} class="productdeleteBtn">Delete</button>
-                    </td>
-                </tr>
+            <tr>
+                <td>${index + 1}</td>
+                <td class="productName">${item.name}</td>
+                <td class="productPrice">${item.price}</td>
+                <td class="productStock">${item.stock}</td>
+                <td class="actions">
+                    <button id="${item._id}" name="${item.name}" class="productdeleteBtn">Delete</button>
+                </td>
+            </tr>
         `
-        productTable.innerHTML = html
+    })
+
+    // Assign HTML OUTSIDE the loop
+    productTable.innerHTML = html
+
+    // Attach event listeners after rendering HTML
+    const productdeleteBtn = document.querySelectorAll('.productdeleteBtn')
+    const editproductMessage = document.querySelector('#editproductMessage')
+
+    productdeleteBtn.forEach((item) => {
+        item.addEventListener('click', async () => {
+            try {
+                const response = await fetch(`${url}/product/${item.id}`, {
+                    method: "DELETE",
+                    credentials: "include"
+                })
+                const data = await response.json()
+
+                if (!response.ok) {
+                    editproductMessage.innerHTML = data.message
+                    editproductMessage.style.color = "Red"
+                } else {
+                    editproductMessage.innerHTML = data.message || "Product deleted"
+                    editproductMessage.style.color = "Green"
+
+                    // RE-FETCH AND RE-RENDER TABLE
+                    await getProduct()
+                }
+
+                setTimeout(() => {
+                    if (editproductMessage) editproductMessage.innerHTML = ""
+                }, 2000)
+
+            } catch (error) {
+                console.log(error)
+            }
+        })
     })
 }
 
