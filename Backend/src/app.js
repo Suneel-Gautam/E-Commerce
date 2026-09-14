@@ -12,7 +12,7 @@ import orderRoute from './routes/order.route.js'
 const app = express()
 
 app.use(cors({
-    origin: "http://localhost:57473",
+    origin: "http://localhost:3000",
     credentials: true
 }))
 app.use(express.json())

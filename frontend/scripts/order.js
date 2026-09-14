@@ -119,15 +119,23 @@ const myOrders = [
     },
 ];
 
+const loginModal = document.querySelector('#loginModal')
 
 import { isAuthenticated, checkLogin } from "./navbar.js"
+
+
 
 
 async function init() {
     await checkLogin()
 
-    if (isAuthenticated) {
-        window.location.href = "/index.html"
+    if (!isAuthenticated) {
+        loginModal.style.display = "flex"
+
+        const loginButton = document.querySelector('#loginButton')
+        loginButton.addEventListener('click',()=>{
+            window.location.href = "/auth.html"
+        })
     }
 }
 init()

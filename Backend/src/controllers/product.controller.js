@@ -20,7 +20,7 @@ const createProduct = asyncHandler(async (req, res) => {
             "Please Select the Size!!!"
         )
     }
-    const productImagePath = req.file?.productImage.path
+    const productImagePath = req.file?.path
     let productImage;
     if (productImagePath) {
         productImage = await fileUpload(productImagePath)

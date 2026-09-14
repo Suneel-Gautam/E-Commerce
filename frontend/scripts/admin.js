@@ -163,7 +163,6 @@ submitCategory.addEventListener("click", async () => {
 
         if (!response.ok) {
             categoryError.innerHTML = data.message
-            console.log(data)
             return
         }
         if (response.ok) {
@@ -220,7 +219,6 @@ const renderCategory = (data) => {
                     method: "DELETE"
                 })
                 const data = await response.json()
-                console.log(data)
                 getCategory()
                 if (!response.ok) {
                     editCategoryMessage.innerHTML = data.message
@@ -277,14 +275,12 @@ inputBox.forEach((item, index) => {
     item.addEventListener('input', () => {
         productPlayload[item.id] = item.value
         errorMessage.innerHTML = ""
-
     })
     item.addEventListener('keydown', (e) => {
         if (e.key === "Enter") {
             if (index !== inputBox.length - 1) {
                 let nextInput = inputBox[index + 1]
                 nextInput.focus()
-
             }
         }
     })
@@ -303,10 +299,14 @@ inputBox.forEach((item, index) => {
 
 
 const selectCatagory = document.querySelector('#Catagory')
-console.log(catagoryOptions)
+
+selectCatagory.innerHTML = `
+    <option value="">Select Category</option>
+`
+
 catagoryOptions.forEach((item) => {
     selectCatagory.innerHTML += ` 
-       <option value="${item._id}">${item.name}</option>
+        <option value="${item._id}">${item.name}</option>
     `
 })
 
@@ -368,22 +368,71 @@ submitProductButton.addEventListener('click', async () => {
     }
 
     const form = new FormData()
-    form.append('name', productPlayload.name)
+    form.append('name', productPlayload.productName)
     form.append('price', productPlayload.price)
+    form.append('stock', productPlayload.stock)
     form.append('category', productPlayload.catagory)
-    form.append('size', productPlayload.size)
+    productPlayload.size.forEach(size => {
+        form.append('size', size)
+    })
     form.append('description', productPlayload.description)
-    form.append('category', productPlayload.catagory)
     form.append('productImage', productPlayload.image)
-
+    for (const [key, value] of form.entries()) {
+        console.log(key, value)
+    }
+    submitProductButton.innerHTML = "Adding Product ..."
+    submitProductButton.disabled = true
 
 
     //// post method for product 
     try {
-        const response = await fetch(`${url}`)
+        const response = await fetch(`${url}/product`, {
+            method: "POST",
+            credentials: "include",
+            body: form
+        })
         const data = await response.json()
-    } catch (error) {
+        console.log(data)
+        if (!response.ok) {
+            errorMessage.innerHTML = data.message
+            return
+        }
+        if (response.ok) {
+            errorMessage.innerHTML = data.message
+            errorMessage.style.color = "Green"
 
+            setTimeout(() => {
+                AddProductModal.style.display = "none"
+                errorMessage.innerHTML = ""
+
+                inputBox.forEach(item => {
+                    item.value = ""
+                })
+                productDescription.value = ""
+                selectCatagory.value = ""
+                radioItem.forEach(item => {
+                    const element = item.children[0]
+                    element.checked = false
+                })
+                image.value = ""
+
+                productPlayload = {
+                    productName: "",
+                    price: "",
+                    stock: "",
+                    catagory: "",
+                    size: [],
+                    description: "",
+                    image: ""
+                }
+            errorMessage.style.color = "Red"
+            }, 2000)
+        }
+    } catch (error) {
+        console.log(error)
+    } finally {
+        submitProductButton.disabled = false
+        submitProductButton.innerHTML = "Add Product"
     }
 
 })

@@ -18,12 +18,18 @@ let cardItem = [
 ]
 import { isAuthenticated, checkLogin } from "./navbar.js"
 
+const loginModal = document.querySelector('#loginModal')
 
 async function init() {
     await checkLogin()
 
     if (!isAuthenticated) {
-        window.location.href = "/index.html"
+        loginModal.style.display = "flex"
+
+        const loginButton = document.querySelector('#loginButton')
+        loginButton.addEventListener('click', () => {
+            window.location.href = "/auth.html"
+        })
     }
 }
 init()

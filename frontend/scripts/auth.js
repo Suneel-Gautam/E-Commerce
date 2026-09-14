@@ -50,6 +50,7 @@ registerButton.addEventListener('click', async () => {
         formData.append("password", payload.password)
         const response = await fetch(`${url}/auth/register`, {
             method: "POST",
+            credentials: "include",
             body: formData
         })
         const data = await response.json()

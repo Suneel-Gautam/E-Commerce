@@ -209,3 +209,119 @@
 .cartContainer .checkoutBtn:hover {
   background-color: rgb(212, 208, 208);
 }
+
+/* Modal Background */
+.loginModal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+
+  align-items: center;
+  justify-content: center;
+
+  z-index: 9999;
+}
+
+/* Modal Box */
+.loginModalContent {
+  position: relative;
+  width: 400px;
+  max-width: 90%;
+  background: #fff;
+  border-radius: 16px;
+  padding: 35px 30px;
+  text-align: center;
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+/* Close Button */
+.closeModal {
+  position: absolute;
+  top: 15px;
+  right: 18px;
+
+  border: none;
+  background: none;
+
+  font-size: 28px;
+  color: #777;
+  cursor: pointer;
+}
+
+.closeModal:hover {
+  color: #111;
+}
+
+/* Lock Icon */
+.loginIcon {
+  width: 60px;
+  height: 60px;
+
+  margin: 0 auto 20px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #f1f1f1;
+
+  font-size: 25px;
+}
+
+/* Heading */
+.loginModalContent h2 {
+  margin: 0 0 10px;
+  font-size: 24px;
+}
+
+/* Description */
+.loginModalContent p {
+  margin: 0 auto 25px;
+
+  max-width: 320px;
+
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Buttons */
+.modalButtons {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+}
+
+.modalButtons button {
+  padding: 11px 25px;
+  border-radius: 8px;
+
+  font-size: 15px;
+  font-weight: 500;
+
+  cursor: pointer;
+}
+
+/* Cancel */
+.cancelBtn {
+  background: #f1f1f1;
+  border: none;
+  color: #333;
+}
+
+.cancelBtn:hover {
+  background: #e5e5e5;
+}
+
+/* Login */
+.loginBtn {
+  background: #111;
+  border: 1px solid #111;
+  color: white;
+}
+
+.loginBtn:hover {
+  background: #333;
+}
