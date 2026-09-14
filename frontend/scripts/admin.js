@@ -77,6 +77,23 @@ const productContainer = `
             <section class="productContainer " id="productContainer">
                 <button class="btn" id="addProductButton">Add Product</button>
             </section>
+       <div class="productTableWrapper">
+        <table class="productTable">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Product Name</th>
+                    <th>Price</th>
+                    <th>Stock</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+
+            <tbody id="productTable">
+
+            </tbody>
+        </table>
+    </div>
             `
 
 const userContainer = `
@@ -245,11 +262,13 @@ const getCategory = async () => {
         const response = await fetch(`${url}/category`)
         const data = await response.json()
         catagoryOptions = data.data
+        if (page === "category") {
+            renderCategory(catagoryOptions)
+        }
     } catch (error) {
     }
 }
 await getCategory()
-
 
 
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
@@ -401,7 +420,7 @@ submitProductButton.addEventListener('click', async () => {
             errorMessage.innerHTML = data.message
             errorMessage.style.color = "Green"
 
-            setTimeout(() => {
+            setTimeout(async () => {
                 AddProductModal.style.display = "none"
                 errorMessage.innerHTML = ""
 
@@ -425,7 +444,8 @@ submitProductButton.addEventListener('click', async () => {
                     description: "",
                     image: ""
                 }
-            errorMessage.style.color = "Red"
+                errorMessage.style.color = "Red"
+                await getProduct()
             }, 2000)
         }
     } catch (error) {
@@ -436,6 +456,51 @@ submitProductButton.addEventListener('click', async () => {
     }
 
 })
+
+
+const renderProduct = (data) => {
+    const productTable = document.querySelector('#productTable')
+    if (!productTable) {
+        return
+    }
+    let html = ""
+
+    data.forEach((item, index) => {
+        html += `
+         <tr>
+                    <td>${index + 1}</td>
+                    <td class="productName">${item.name}</td>
+                    <td class="productPrice">${item.price}</td>
+                    <td class="productStock">${item.stock}</td>
+                    <td class="actions">
+                        <button id=${item._id} name=${item.name} class="productdeleteBtn">Delete</button>
+                    </td>
+                </tr>
+        `
+        productTable.innerHTML = html
+    })
+}
+
+/// render product in tablee
+let productdata;
+const getProduct = async () => {
+    try {
+        const response = await fetch(`${url}/product`)
+        const data = await response.json()
+        if (!response.ok) {
+            console.log(data.message)
+        }
+        productdata = data.data
+        if (page === "product") {
+            renderProduct(data.data)
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+}
+await getProduct()
+
 
 
 //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// //// ////
@@ -517,7 +582,7 @@ const pagechange = () => {
     } else if (page === "product") {
         mainConatiner.innerHTML = productContainer
         localStorage.setItem("setActive", "product")
-
+        renderProduct(productdata)
         const addProductButton = document.querySelector('#addProductButton')
         addProductButton.addEventListener('click', () => {
             AddProductModal.style.display = 'flex'
