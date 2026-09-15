@@ -22,9 +22,6 @@ export async function checkLogin() {
 
       isAuthenticated = false
       profileinfo = null
-
-      console.log(data)
-
       return
     }
 
@@ -32,7 +29,6 @@ export async function checkLogin() {
     isAuthenticated = true
     profileinfo = data.data
 
-    console.log(profileinfo)
 
   } catch (error) {
 

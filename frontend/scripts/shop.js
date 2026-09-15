@@ -128,7 +128,7 @@ const shopContainer = document.querySelector('body')
 cardsContainer.forEach((card) => {
     buttonClick()
     card.addEventListener('click', () => {
-        let product = products.find(item => item._id === Number(card.dataset.id))
+        let product = products.find(item => item._id === card.dataset.id)
         detailOpen(product, shopContainer)
     })
 })

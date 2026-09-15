@@ -4,31 +4,40 @@ export function productModal(product) {
             <button class="closeBtn" id="close-Btn">
                 <i class="fa-solid fa-xmark"></i>
             </button>
+
             <div class="productImage">
-                <img src="${product.image}" alt="Chicken Burger">
+                <img src="${product.productImage}" alt="${product.name}">
             </div>
+
             <div class="productInfo">
                 <span class="category">${product.category}</span>
-                <h1>${product.title}</h1>
+
+                <h1>${product.name}</h1>
+
                 <p class="description">
-                   ${product.description}
+                    ${product.description}
                 </p>
+
                 <div class="price">
-                    ${product.price}
+                    Rs ${product.price}
                 </div>
+
                 <div class="quantityWrapper">
                     <span>Quantity</span>
+
                     <div class="quantity">
                         <button id="decreaseBtn">-</button>
                         <span id="quantity">1</span>
                         <button id="increaseBtn">+</button>
                     </div>
                 </div>
+
                 <div class="buttons">
                     <button class="addToCart">
                         <i class="fa-solid fa-cart-shopping"></i>
                         Add to cart
                     </button>
+
                     <button class="buyNow">
                         Buy Now
                     </button>
@@ -62,7 +71,7 @@ function quantityButton() {
     if (decreaseBtn) {
         decreaseBtn.addEventListener('click', () => {
             if (count > 1) {
-                count --
+                count--
                 quantityCount.innerHTML = count
             }
         })

@@ -1,9 +1,11 @@
 import { productCard } from "../components/product.js";
+import { url } from "../api/fetchApi.js";
 import { products } from "../components/product.js";
 const selectFile = document.querySelector('#selectFile')
 const chooseImage = document.querySelector('#chooseImage')
 import { detailOpen } from "../components/productModal.js";
 import { buttonClick } from "../components/product.js";
+
 
 
 
@@ -27,10 +29,10 @@ const mainConatiner = document.querySelector('body')
 cardsContainer.forEach(card => {
   buttonClick()
   card.addEventListener('click', () => {
-    let product = products.find(item => item._id === Number(card.dataset.id))
-    // console.log(product)
+    console.log(products)
+    let product = products.find(item => item._id === card.dataset.id)
+    console.log(product)
     detailOpen(product, mainConatiner)
-
   })
 })
 
