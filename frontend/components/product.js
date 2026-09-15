@@ -5,7 +5,7 @@ export function productCard(product) {
   <div class="CardConatiner"  data-id="${product._id}">
     <div class="imageDiv">
       <img src=${product.productImage} alt="" />
-      <div class="catagory">${product.category}</div>
+      <div class="catagory">${product.category.name}</div>
     </div>
     <div class="contentArea">
       <div class="title">${product.name}</div>
@@ -65,6 +65,7 @@ const getProduct = async () => {
 
 await getProduct()
 
+console.log("products:", products)
 export const category = [
   {
     name: "Sneakers",

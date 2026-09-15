@@ -1,21 +1,27 @@
-let cardItem = [
-    {
-        id: 1,
-        productImage: '../images/image.png',
-        name: "Shoes Caliber 250",
-        price: "1500",
-        size: "M",
-        quantity: 1,
-    },
-    {
-        id: 2,
-        productImage: '../images/image.png',
-        name: "Shoes Caliber1 250",
-        price: "1500",
-        size: "M",
-        quantity: 1,
-    },
-]
+
+
+import { url } from "../api/fetchApi.js"
+
+let cardItem = []
+const getCardData = async () => {
+    try {
+        const response = await fetch(`${url}/cart`, {
+            credentials: "include"
+        })
+        const data = await response.json()
+        if (!response.ok) {
+            console.log(data)
+        } else {
+            cardItem = data.data
+        }
+
+    } catch (error) {
+        console.log(error)
+    }
+
+}
+
+getCardData()
 import { isAuthenticated, checkLogin } from "./navbar.js"
 
 const loginModal = document.querySelector('#loginModal')
@@ -36,6 +42,11 @@ init()
 const cardItems = document.querySelector('.cardItems')
 
 function renderCart(cartProduct) {
+
+    if (cardItem.length === 0) {
+        cardItems.innerHTML = "<span>No Cart Item found</span>"
+        return
+    }
     let cardHtml = ""
     cartProduct.forEach((item) => {
         cardHtml += `

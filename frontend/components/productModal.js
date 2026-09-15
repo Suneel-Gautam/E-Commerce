@@ -10,7 +10,7 @@ export function productModal(product) {
             </div>
 
             <div class="productInfo">
-                <span class="category">${product.category}</span>
+                <span class="category">${product.category.name}</span>
 
                 <h1>${product.name}</h1>
 

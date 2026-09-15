@@ -58,72 +58,11 @@ const myOrders = [
             grandTotal: 3000,
         },
     },
-    {
-        orderId: "120000123123123",
-        orderDate: "July 31 2025 at 09:23 pm",
-        paymentStatus: "Payment Pending",
-        deliveryStatus: "Delivery Pending",
-        items: [
-            {
-                id: 1,
-                name: "Shoes Caliber 250",
-                image: "images/image.png",
-                size: "M",
-                quantity: 1,
-                price: 1500,
-            },
-            {
-                id: 2,
-                name: "Shoes Caliber 250",
-                image: "images/image.png",
-                size: "M",
-                quantity: 1,
-                price: 1500,
-            },
-            {
-                id: 2,
-                name: "Shoes Caliber 250",
-                image: "images/image.png",
-                size: "M",
-                quantity: 1,
-                price: 1500,
-            },
-            {
-                id: 2,
-                name: "Shoes Caliber 250",
-                image: "images/image.png",
-                size: "M",
-                quantity: 1,
-                price: 1500,
-            },
-            {
-                id: 2,
-                name: "Shoes Caliber 250",
-                image: "images/image.png",
-                size: "M",
-                quantity: 1,
-                price: 1500,
-            },
-        ],
-        shippingDetails: {
-            name: "Sunil Gautam",
-            email: "gautamsunil917@gmail.com",
-            phoneNumber: "9841046495",
-            address: "Duwakot - 1 near KMC Hospital",
-        },
-        summary: {
-            subTotal: 3000,
-            deliveryCharge: 0,
-            grandTotal: 3000,
-        },
-    },
 ];
 
 const loginModal = document.querySelector('#loginModal')
 
 import { isAuthenticated, checkLogin } from "./navbar.js"
-
-
 
 
 async function init() {
@@ -133,7 +72,7 @@ async function init() {
         loginModal.style.display = "flex"
 
         const loginButton = document.querySelector('#loginButton')
-        loginButton.addEventListener('click',()=>{
+        loginButton.addEventListener('click', () => {
             window.location.href = "/auth.html"
         })
     }

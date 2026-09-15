@@ -138,8 +138,7 @@ const deleteProduct = asyncHandler(async (req, res) => {
 
 })
 const getProduct = asyncHandler(async (req, res) => {
-    const product = await Product.find()
-
+    const product = await Product.find().populate("category")
     return res.status(200).json(
         new Apiresponse(
             200,
